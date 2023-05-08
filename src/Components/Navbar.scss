@@ -35,6 +35,11 @@
   color: #333;
 }
 
+.nav-menu a:hover{
+  color: #5d8fff;
+  transition: 0.3s sease-in-out;
+}
+
 .hamburger{
   display: none;
   cursor: pointer;

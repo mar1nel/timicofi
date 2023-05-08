@@ -55,21 +55,21 @@ p{font-size: 1.2rem;}
   border: 1px solid var(--primary);
   background-color: var(--primary);
   color: #fff;
-  border-radius: 24px 4px;
+  border-radius: 24px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
 }
 
 .btn:hover{
-  box-shadow: rgb(0 0 0/ 15%) 0px 8px 24px;
+  box-shadow: rgb(17 139 79/ 30%) 0px 0px 15px;
 }
 
 input{
   padding: 12px 32px;
   border: 1px solid var(--primary);
   background: transparent;
-  border-radius: 24px 4px;
+  border-radius: 30px;
   font-size: 1rem;
   margin-right: 0.8rem;
   font-family: 'Poppins', sans-serif;

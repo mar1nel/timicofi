@@ -61,10 +61,12 @@
     z-index: 2;
     background: #fff;
     border-left: 1px solid #eee;
+    display: none;
   }
   .nav-menu.active {
     right: 0;
     transition: 0.5s;
+    display: flex;
   }
   .nav-menu li {
     padding: 1rem;

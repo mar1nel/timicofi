@@ -1,6 +1,6 @@
 import React from "react";
 import './Signup.scss'
-import Crypto from '../Assets/trade.png'
+import Rocket from '../Assets/rocket.png'
 import {motion} from "framer-motion";
 
 const Signup = () => {
@@ -25,7 +25,7 @@ const Signup = () => {
                                 animationDuration: 0.5
                             }}
                 >
-                    <img src={Crypto} alt='' />
+                    <img src={Rocket} alt='' />
                 </motion.div>
 
                 {/* right */}

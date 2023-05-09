@@ -1,15 +1,32 @@
 import React from "react";
 import './Signup.scss'
 import Crypto from '../Assets/trade.png'
+import {motion} from "framer-motion";
 
 const Signup = () => {
     return(
         <div className='signup'>
             <div className='container'>
                 {/* left */}
-                <div className='left'>
+                <motion.div className='left'
+                            /*animate={{ rotate: 30 }}
+                            transition={{
+                                repeat: 1,
+                                repeatType: "reverse",
+                                duration: 1
+                            }}*/
+
+                    initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            transition={{duration: 1}}
+
+                            whileHover={{
+                                scale: 1.1,
+                                animationDuration: 0.5
+                            }}
+                >
                     <img src={Crypto} alt='' />
-                </div>
+                </motion.div>
 
                 {/* right */}
                 <div className='right'>

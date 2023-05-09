@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './Navbar.scss';
 import {FaBars, FaTimes} from 'react-icons/fa';
+import {motion} from "framer-motion";
 
 const Navbar = () => {
 
@@ -26,8 +27,16 @@ const Navbar = () => {
                     </li>
                 </ul>
 
-                <div className='btn_group'>
-                    <button className='btn'>Connect Wallet</button>
+                <div className='btn_group'> {/*<button className='btn'>Connect Wallet</button>*/}
+                    <motion.button className='btn'
+                        whileHover={{
+                            scale: 1.1,
+                            /*textShadow: "0px 0px 8px rgb(255,255,255)"*/
+                    }}
+                                   whileTap={{ scale: 0.95, duration: 0.5 }}
+                    >
+                        Connect Wallet NOW
+                    </motion.button>
                 </div>
 
                 <div className='hamburger' onClick={handleClick}>

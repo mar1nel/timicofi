@@ -1,6 +1,7 @@
 import React from "react";
 import './Hero.scss';
 import Crypto from '../Assets/hero-img.png'
+import {motion} from "framer-motion";
 
 
 const Hero = () => {
@@ -19,9 +20,18 @@ const Hero = () => {
                 </div>
                 {/*right side*/}
                 <div className='right'>
-                    <div className='img-container'>
+                    <motion.div className='img-container'
+                                initial={{opacity: 0}}
+                    animate={{x:10, y:10, opacity:1}}
+                                transition={{
+                                    ease: "linear",
+                                    duration: 1,
+                                    x: { duration: 1 },
+                                    y: { duration: 1 }
+                                }}
+                    >
                         <img src={Crypto} alt=''/>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>

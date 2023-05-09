@@ -2,7 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 Also was used [Framer Motion Library](https://github.com/framer) for animation and other effects. \
-The Public [API CoinGecko](https://www.coingecko.com/en/api/pricing) provided independently sourced crypto data such as live prices, trading volume, exchange volumes, trading pairs, images and more.
+The Public [API CoinGecko](https://www.coingecko.com/en/api/pricing) provided independently sourced crypto data.
+
+🌎 Coded by silliest man alive: `mar1nel` 
 
 <br>
 
@@ -23,7 +25,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-## 💧 License
-
-This project is licensed under the chillest man alive: [mar1nel](https://www.linkedin.com/in/ababii-vicu-b7a08a237/).

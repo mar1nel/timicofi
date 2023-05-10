@@ -62,11 +62,13 @@
     z-index: 2;
     background: #fff;
     border-left: 1px solid #eee;
+    display: none;
   }
 
   .nav-menu.active{ //push to left hamburger
     right: 0;
     transition: 0.5s;
+    display: flex;
   }
 
   .nav-menu li{

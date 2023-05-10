@@ -1,6 +1,6 @@
 import React from "react";
 import './Hero.scss';
-import Crypto from '../Assets/hero-img.png'
+import Planet from '../Assets/planet.png'
 import {motion} from "framer-motion";
 
 
@@ -30,7 +30,7 @@ const Hero = () => {
                                     y: { duration: 1 }
                                 }}
                     >
-                        <img src={Crypto} alt=''/>
+                        <img src={Planet} alt=''/>
                     </motion.div>
                 </div>
             </div>

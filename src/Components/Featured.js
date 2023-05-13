@@ -56,12 +56,12 @@ const Featured = () => {
                     <Card.Body style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", overflow: "hidden" }}>
                         <div className='top'>
                             {/*<img src={BTC} alt='/'/>*/}
-                            <img src={data[9].image} alt=''/>
+                            <img src={data[10].image} alt=''/>
                         </div>
-                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                        <div style={{ textAlign: "center", }}>
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                                <h5>{data[9].name}</h5>
-                                <p>${data[9].current_price.toLocaleString()}</p>
+                                <h5>{data[10].name}</h5>
+                                <p><h5>${data[10].current_price.toLocaleString()}</h5></p>
                             </div>
                         </div>
 
@@ -99,7 +99,7 @@ const Featured = () => {
                             {/*<img src={BTC} alt='/'/>*/}
                             <img src={data[1].image} alt=''/>
                         </div>
-                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                        <div style={{ textAlign: "center", }}>
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                                 <h5>{data[1].name}</h5>
                                 <p><h5>${data[1].current_price.toLocaleString()}</h5></p>
@@ -139,7 +139,7 @@ const Featured = () => {
                             {/*<img src={BTC} alt='/'/>*/}
                             <img src={data[2].image} alt=''/>
                         </div>
-                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                        <div style={{ textAlign: "center", }}>
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                                 <h5>{data[2].name}</h5>
                                 <p><h5>${data[2].current_price.toLocaleString()}</h5></p>
@@ -179,7 +179,7 @@ const Featured = () => {
                             {/*<img src={BTC} alt='/'/>*/}
                             <img src={data[3].image} alt=''/>
                         </div>
-                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                        <div style={{ textAlign: "center", }}>
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                                 <h5>{data[3].name}</h5>
                                 <p><h5>${data[3].current_price.toLocaleString()}</h5></p>
@@ -219,7 +219,7 @@ const Featured = () => {
                             {/*<img src={BTC} alt='/'/>*/}
                             <img src={data[7].image} alt=''/>
                         </div>
-                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                        <div style={{ textAlign: "center", }}>
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                                 <h5>{data[7].name}</h5>
                                 <p><h5>${data[7].current_price.toLocaleString()}</h5></p>
@@ -259,7 +259,7 @@ const Featured = () => {
                             {/*<img src={BTC} alt='/'/>*/}
                             <img src={data[6].image} alt=''/>
                         </div>
-                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                        <div style={{ textAlign: "center", }}>
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                                 <h5>{data[6].name}</h5>
                                 <p><h5>${data[6].current_price.toLocaleString()}</h5></p>

@@ -1,10 +1,19 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Navbar from "../Components/Navbar";
 import { Table } from '@nextui-org/react';
 // import styles from "./src/ComponentsUI.scss";
+import axios from "axios";
+
 const CryptoTable = () => {
 
-    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=12&page=1&sparkline=false&locale=en'
+    const api = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=12&page=1&sparkline=false&locale=en'
+
+    // fetch(api)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         const items = data;
+    //         const
+    //     })
 
 
     return(
@@ -13,7 +22,7 @@ const CryptoTable = () => {
             <h1 style={{
                 textAlign: "center",
                 padding: "20px",
-            }}>Crypto Overview</h1>
+            }}>Crypto <span className="primary">Overview</span></h1>
 
 
             <Table

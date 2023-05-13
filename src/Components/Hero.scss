@@ -31,7 +31,15 @@
 .hero img {
   max-width: 80%;
   margin: auto;
+  z-index: 1;
 }
+
+//.confetti{
+//  position: absolute;
+//  top: 200px;
+//  left: 245px;
+//  z-index: 3;
+//}
 
 @media screen and (max-width: 940px) {
   .hero .container {

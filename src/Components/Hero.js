@@ -2,6 +2,7 @@ import React from "react";
 import './Hero.scss';
 import Planet from '../Assets/planet.png'
 import {motion} from "framer-motion";
+import Confetti from "./Confetti";
 
 
 const Hero = () => {
@@ -20,6 +21,7 @@ const Hero = () => {
                 </div>
                 {/*right side*/}
                 <div className='right'>
+
                     <motion.div className='img-container'
                                 initial={{opacity: 0}}
                     animate={{x:10, y:10, opacity:1}}
@@ -30,6 +32,8 @@ const Hero = () => {
                                     y: { duration: 1 }
                                 }}
                     >
+                        {/*<div className="confetti"><Confetti ></Confetti></div>*/}
+
                         <img src={Planet} alt=''/>
                     </motion.div>
                 </div>

@@ -81,7 +81,7 @@ input{
 }
 
 .input-style:focus{
-  outline: 2px solid #105bff;
+  outline: 1px solid #105bff;
 }
 
 @media screen and (max-width: 768px) {

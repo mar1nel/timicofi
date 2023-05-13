@@ -4,6 +4,9 @@ import BTC from '../Assets/btc-img.png'
 /*import {FaArrowRight} from "react-icons/all";*/
 import {FiArrowRight, FiArrowDown} from "react-icons/fi";
 import axios from "axios";
+import { NextUIProvider } from '@nextui-org/react';
+import {Button} from "@nextui-org/react";
+import { Card, Text } from "@nextui-org/react";
 
 const Featured = () => {
 
@@ -25,6 +28,7 @@ const Featured = () => {
 
 
     return(
+        <NextUIProvider>
     <div className='featured'>
         <div className='container'>
             <div className='left'>
@@ -36,152 +40,251 @@ const Featured = () => {
             <div className='right'>
 
                 {/*card1*/}
-                <div className='card'>
-                <div className='top'>
-                    {/*<img src={BTC} alt='/'/>*/}
-                    <img src={data[10].image} alt=''/>
-                </div>
-                <div>
-                    <h5>{data[10].name}</h5>
-                    <p>${data[10].current_price.toLocaleString()}</p>
-                </div>
+                {/*<div className='card'>*/}
+                <Card
+                    isPressable
+                    // isHoverable
+                    variant="bordered"
+                    css={{
+                        mw: "180px",
+                        mh: "180px",
+                        display: "flex",
+                        border: "1px solid #ced5ff",
+                        padding: "12px 22px",
+                        margin: "0.4rem",
+                        // background: "#dde3ff"
+                    }}>
+                    <Card.Body style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", overflow: "hidden" }}>
+                        <div className='top'>
+                            {/*<img src={BTC} alt='/'/>*/}
+                            <img src={data[9].image} alt=''/>
+                        </div>
+                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                <h5>{data[9].name}</h5>
+                                <p><h5>${data[9].current_price.toLocaleString()}</h5></p>
+                            </div>
+                        </div>
 
-                {data[10].price_change_percentage_24h < 0 ? (
-                    <span className='red'>
-                        <FiArrowDown className='icon'/>
-                        {data[10].price_change_percentage_24h}%
-                    </span>
-                ) : (
-                    <span className='green'>
-                        <FiArrowRight  className='icon'/>
-                        {data[0].price_change_percentage_24h.toFixed(2)}%
-                    </span>
-                )}
-                </div>
+                        {data[9].price_change_percentage_24h < 0 ? (
+                            <span className='red'>
+                                 <FiArrowDown className='icon'/>
+                                {data[9].price_change_percentage_24h}%
+                              </span>
+                                    ) : (
+                              <span className='green'>
+                                <FiArrowRight  className='icon'/>
+                                {data[9].price_change_percentage_24h.toFixed(2)}%
+                            </span>
+                        )}
+                    </Card.Body>
+                </Card>
+
 
                 {/*card2*/}
-                <div className='card'>
-                    <div className='top'>
-                        {/*<img src={BTC} alt='/'/>*/}
-                        <img src={data[1].image} alt=''/>
-                    </div>
-                    <div>
-                        <h5>{data[1].name}</h5>
-                        <p>${data[1].current_price.toLocaleString()}</p>
-                    </div>
+                <Card
+                    isPressable
+                    // isHoverable
+                    variant="bordered"
+                    css={{
+                        mw: "180px",
+                        mh: "180px",
+                        display: "flex",
+                        border: "1px solid #ced5ff",
+                        padding: "12px 22px",
+                        margin: "0.4rem",
+                        // background: "#dde3ff"
+                    }}>
+                    <Card.Body style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", overflow: "hidden" }}>
+                        <div className='top'>
+                            {/*<img src={BTC} alt='/'/>*/}
+                            <img src={data[1].image} alt=''/>
+                        </div>
+                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                <h5>{data[1].name}</h5>
+                                <p><h5>${data[1].current_price.toLocaleString()}</h5></p>
+                            </div>
+                        </div>
 
-                    {data[1].price_change_percentage_24h < 0 ? (
-                        <span className='red'>
-                        <FiArrowDown  className='icon'/>
-                            {data[1].price_change_percentage_24h}%
-                    </span>
-                    ) : (
-                        <span className='green'>
-                        <FiArrowRight  className='icon'/>
-                            {data[1].price_change_percentage_24h.toFixed(2)}%
-                    </span>
-                    )}
-                </div>
+                        {data[1].price_change_percentage_24h < 0 ? (
+                            <span className='red'>
+                                 <FiArrowDown className='icon'/>
+                                {data[1].price_change_percentage_24h}%
+                              </span>
+                        ) : (
+                            <span className='green'>
+                                <FiArrowRight  className='icon'/>
+                                {data[1].price_change_percentage_24h.toFixed(2)}%
+                            </span>
+                        )}
+                    </Card.Body>
+                </Card>
 
                 {/*card3*/}
-                <div className='card'>
-                    <div className='top'>
-                        {/*<img src={BTC} alt='/'/>*/}
-                        <img src={data[2].image} alt=''/>
-                    </div>
-                    <div>
-                        <h5>{data[2].name}</h5>
-                        <p>${data[2].current_price.toLocaleString()}</p>
-                    </div>
+                <Card
+                    isPressable
+                    // isHoverable
+                    variant="bordered"
+                    css={{
+                        mw: "180px",
+                        mh: "180px",
+                        display: "flex",
+                        border: "1px solid #ced5ff",
+                        padding: "12px 22px",
+                        margin: "0.4rem",
+                        // background: "#dde3ff"
+                    }}>
+                    <Card.Body style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", overflow: "hidden" }}>
+                        <div className='top'>
+                            {/*<img src={BTC} alt='/'/>*/}
+                            <img src={data[2].image} alt=''/>
+                        </div>
+                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                <h5>{data[2].name}</h5>
+                                <p><h5>${data[2].current_price.toLocaleString()}</h5></p>
+                            </div>
+                        </div>
 
-                    {data[2].price_change_percentage_24h < 0 ? (
-                        <span className='red'>
-                        <FiArrowDown  className='icon'/>
-                            {data[2].price_change_percentage_24h}%
-                    </span>
-                    ) : (
-                        <span className='green'>
-                        <FiArrowRight className='icon'/>
-                            {data[2].price_change_percentage_24h.toFixed(2)}%
-                    </span>
-                    )}
-                </div>
+                        {data[2].price_change_percentage_24h < 0 ? (
+                            <span className='red'>
+                                 <FiArrowDown className='icon'/>
+                                {data[2].price_change_percentage_24h}%
+                              </span>
+                        ) : (
+                            <span className='green'>
+                                <FiArrowRight  className='icon'/>
+                                {data[2].price_change_percentage_24h.toFixed(2)}%
+                            </span>
+                        )}
+                    </Card.Body>
+                </Card>
 
                 {/*card4*/}
-                <div className='card'>
-                    <div className='top'>
-                        {/*<img src={BTC} alt='/'/>*/}
-                        <img src={data[6].image} alt=''/>
-                    </div>
-                    <div>
-                        <h5>{data[6].name}</h5>
-                        <p>${data[6].current_price.toLocaleString()}</p>
-                    </div>
+                <Card
+                    isPressable
+                    // isHoverable
+                    variant="bordered"
+                    css={{
+                        mw: "180px",
+                        mh: "180px",
+                        display: "flex",
+                        border: "1px solid #ced5ff",
+                        padding: "12px 22px",
+                        margin: "0.4rem",
+                        // background: "#dde3ff"
+                    }}>
+                    <Card.Body style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", overflow: "hidden" }}>
+                        <div className='top'>
+                            {/*<img src={BTC} alt='/'/>*/}
+                            <img src={data[3].image} alt=''/>
+                        </div>
+                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                <h5>{data[3].name}</h5>
+                                <p><h5>${data[3].current_price.toLocaleString()}</h5></p>
+                            </div>
+                        </div>
 
-                    {data[7].price_change_percentage_24h < 0 ? (
-                        <span className='red'>
-                        <FiArrowDown className='icon'/>
-                            {data[6].price_change_percentage_24h}%
-                    </span>
-                    ) : (
-                        <span className='green'>
-                        <FiArrowRight className='icon'/>
-                            {data[6].price_change_percentage_24h.toFixed(2)}%
-                    </span>
-                    )}
-                </div>
+                        {data[3].price_change_percentage_24h < 0 ? (
+                            <span className='red'>
+                                 <FiArrowDown className='icon'/>
+                                {data[3].price_change_percentage_24h}%
+                              </span>
+                        ) : (
+                            <span className='green'>
+                                <FiArrowRight  className='icon'/>
+                                {data[3].price_change_percentage_24h.toFixed(2)}%
+                            </span>
+                        )}
+                    </Card.Body>
+                </Card>
 
                 {/*card5*/}
-                <div className='card'>
-                    <div className='top'>
-                        {/*<img src={BTC} alt='/'/>*/}
-                        <img src={data[9].image} alt=''/>
-                    </div>
-                    <div>
-                        <h5>{data[9].name}</h5>
-                        <p>${data[9].current_price.toLocaleString()}</p>
-                    </div>
+                <Card
+                    isPressable
+                    // isHoverable
+                    variant="bordered"
+                    css={{
+                        mw: "180px",
+                        mh: "180px",
+                        display: "flex",
+                        border: "1px solid #ced5ff",
+                        padding: "12px 22px",
+                        margin: "0.4rem",
+                        // background: "#dde3ff"
+                    }}>
+                    <Card.Body style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", overflow: "hidden" }}>
+                        <div className='top'>
+                            {/*<img src={BTC} alt='/'/>*/}
+                            <img src={data[7].image} alt=''/>
+                        </div>
+                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                <h5>{data[7].name}</h5>
+                                <p><h5>${data[7].current_price.toLocaleString()}</h5></p>
+                            </div>
+                        </div>
 
-                    {data[9].price_change_percentage_24h < 0 ? (
-                        <span className='red'>
-                        <FiArrowDown className='icon'/>
-                            {data[9].price_change_percentage_24h}%
-                    </span>
-                    ) : (
-                        <span className='green'>
-                        <FiArrowRight className='icon'/>
-                            {data[9].price_change_percentage_24h.toFixed(2)}%
-                    </span>
-                    )}
-                </div>
+                        {data[7].price_change_percentage_24h < 0 ? (
+                            <span className='red'>
+                                 <FiArrowDown className='icon'/>
+                                {data[7].price_change_percentage_24h}%
+                              </span>
+                        ) : (
+                            <span className='green'>
+                                <FiArrowRight  className='icon'/>
+                                {data[7].price_change_percentage_24h.toFixed(2)}%
+                            </span>
+                        )}
+                    </Card.Body>
+                </Card>
 
                 {/*card6*/}
-                <div className='card'>
-                    <div className='top'>
-                        {/*<img src={BTC} alt='/'/>*/}
-                        <img src={data[5].image} alt=''/>
-                    </div>
-                    <div>
-                        <h5>{data[5].name}</h5>
-                        <p>${data[5].current_price.toLocaleString()}</p>
-                    </div>
+                <Card
+                    isPressable
+                    // isHoverable
+                    variant="bordered"
+                    css={{
+                        mw: "180px",
+                        mh: "180px",
+                        display: "flex",
+                        border: "1px solid #ced5ff",
+                        padding: "12px 22px",
+                        margin: "0.4rem",
+                        // background: "#dde3ff"
+                    }}>
+                    <Card.Body style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", overflow: "hidden" }}>
+                        <div className='top'>
+                            {/*<img src={BTC} alt='/'/>*/}
+                            <img src={data[6].image} alt=''/>
+                        </div>
+                        <div style={{ textAlign: "center", overflow: "hidden" }}>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                <h5>{data[6].name}</h5>
+                                <p><h5>${data[6].current_price.toLocaleString()}</h5></p>
+                            </div>
+                        </div>
 
-                    {data[5].price_change_percentage_24h < 0 ? (
-                        <span className='red'>
-                        <FiArrowDown className='icon'/>
-                            {data[5].price_change_percentage_24h}%
-                    </span>
-                    ) : (
-                        <span className='green'>
-                        <FiArrowRight className='icon'/>
-                            {data[0].price_change_percentage_24h.toFixed(2)}%
-                    </span>
-                    )}
-                </div>
+                        {data[10].price_change_percentage_24h < 0 ? (
+                            <span className='red'>
+                                 <FiArrowDown className='icon'/>
+                                {data[6].price_change_percentage_24h}%
+                              </span>
+                        ) : (
+                            <span className='green'>
+                                <FiArrowRight  className='icon'/>
+                                {data[6].price_change_percentage_24h.toFixed(2)}%
+                            </span>
+                        )}
+                    </Card.Body>
+                </Card>
 
             </div>
         </div>
     </div>
+            </NextUIProvider>
     )
 }
 

@@ -12,13 +12,10 @@ function App() {
         <>
             <Navbar />
             <Hero />
+            <Featured/>
             <Signup />
             <Footer />
 
-            <Routes>
-                <Route path="/featured" element={<Featured />} />
-                <Route path="/table" element={<Table />} />
-            </Routes>
         </>
     );
 }

@@ -87,7 +87,7 @@
     align-self: center;
   }
 }
-@media screen and (max-width: 478) {
+@media screen and (max-width: 490px) {
   .featured .container .right .card {
     width: 100%;
   }

@@ -1,5 +1,5 @@
 import { FaBars, FaTimes } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./Navbar.scss";
@@ -16,21 +16,19 @@ const Navbar = () => {
                 </h2>
                 <ul className={click ? "nav-menu active" : "nav-menu"}>
                     <li>
-                        <NavLink exact to="/">
-                            Home
-                        </NavLink>
+                        <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <NavLink to="/featured">Features</NavLink>
+                        <Link to="/featured">Features</Link>
                     </li>
                     <li>
-                        <NavLink to="/">Earn</NavLink>
+                        <Link to="/">Earn</Link>
                     </li>
                     <li>
-                        <NavLink to="/table">Tables</NavLink>
+                        <Link to="/table">Tables</Link>
                     </li>
                     <li>
-                        <NavLink to="/">Contact</NavLink>
+                        <Link to="/">Contact</Link>
                     </li>
                 </ul>
 

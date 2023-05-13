@@ -54,15 +54,15 @@
     position: absolute;
     flex-direction: column;
     justify-content: start;
-    top: 90px;
+    top: 78px;
     right: -100%;
     width: 50%;
     height: 100vh;
     transition: 0.4s;
-    z-index: 2;
+    z-index:4;
     background: #fff;
     border-left: 1px solid #eee;
-    display: none;
+
   }
 
   .nav-menu.active{ //push to left hamburger

@@ -24,6 +24,7 @@ const CryptoTable = () => {
                 css={{
                     height: "auto",
                     minWidth: "100%",
+                    zIndex:"2",
                 }}
                 selectionMode="multiple">
 

@@ -10,7 +10,6 @@ import { Card, Text } from "@nextui-org/react";
 
 const Featured = () => {
 
-    // eslint-disable-next-line no-unused-vars
     const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=12&page=1&sparkline=false&locale=en'
 
     const [data, setData] = useState(null);
@@ -62,7 +61,7 @@ const Featured = () => {
                         <div style={{ textAlign: "center", overflow: "hidden" }}>
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                                 <h5>{data[9].name}</h5>
-                                <p><h5>${data[9].current_price.toLocaleString()}</h5></p>
+                                <p>${data[9].current_price.toLocaleString()}</p>
                             </div>
                         </div>
 

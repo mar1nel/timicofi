@@ -19,13 +19,13 @@ const Navbar = () => {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/featured">Features</Link>
+                        <Link to="/featured">Featured</Link>
                     </li>
                     <li>
                         <Link to="/">Earn</Link>
                     </li>
                     <li>
-                        <Link to="/table">Tables</Link>
+                        <Link to="/crypto-table">Tables</Link>
                     </li>
                     <li>
                         <Link to="/">Contact</Link>

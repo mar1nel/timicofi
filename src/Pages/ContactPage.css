@@ -1,0 +1,8 @@
+.contact-bg {
+  width: 100%;
+  padding: 8rem 0;
+  background-color: var(--background);
+  clip-path: polygon(0 0%, 100% 10%, 100% 100%, 0% 80%);
+}
+
+/*# sourceMappingURL=ContactPage.css.map */

@@ -9,13 +9,49 @@
 .contact-form {
   background-color: white;
   align-items: center;
-  margin: auto;
   justify-content: center;
   width: 600px;
   height: 500px;
   box-shadow: 0 0px 40px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   border-color: #0072F5;
+}
+
+.contact-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 260px;
+  margin-bottom: 100px;
+}
+
+.contact-us-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-links {
+  flex-direction: column;
+  display: flex;
+}
+
+.socials {
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  margin-top: 10px;
+  margin-right: 20px;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=ContactPage.css.map */

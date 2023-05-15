@@ -54,20 +54,23 @@ const ContactPage = () => {
                 </p>
                 </div>
 
-                <div className="contact-form">
-                    <h2 style={{
-                        textAlign: "center",
-                        marginTop: "-20px",
-                        color: "white"
-                    }}>Contact Form</h2>
+                <div className="contact-hero">
+
+                    <div className="contact-form">
+
                     <div className="form-input">
+
                         <Grid.Container gap={2.5} css={{
-                            mt: "4px",
                             display: "grid",
-                            space: "",
                             maxWidth: "400px",
                             margin: "0 auto",
                         }}>
+                            <h2 style={{
+                                textAlign: "center",
+                                marginTop: "10px",
+                                marginBottom: "20px",
+                                color: "Black"
+                            }}>Contact Form</h2>
                             <Input
                                 size="md"
                                 placeholder="Name"
@@ -136,16 +139,24 @@ const ContactPage = () => {
                                 Cancel
                             </Button>
                         </div>
-
-
-
                     </div>
                 </div>
 
-                <div className="contact-us">
+                    <div className="contact-us">
+                        <div className="contact-us-title">
+                            <h2>Our Contacts</h2>
+                        </div>
+                        <div className="contact-links">
+                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-59-512.png'/>Telegram</a>
+                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-03-512.png'/>Instagram</a>
+                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-05-512.png'/>Twitter</a>
+                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-04-512.png'/>Facebook</a>
+                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-44-512.png'/>LinkedIn</a>
+
+                        </div>
+                    </div>
 
                 </div>
-
 
 
                 <Footer/>

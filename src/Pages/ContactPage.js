@@ -68,6 +68,7 @@ const ContactPage = () => {
                             <h2 style={{
                                 textAlign: "center",
                                 marginTop: "10px",
+                                marginRight: "40px",
                                 marginBottom: "20px",
                                 color: "Black"
                             }}>Contact Form</h2>
@@ -130,9 +131,9 @@ const ContactPage = () => {
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                            marginTop: "20px",
+                            marginTop: "40px",
                         }}>
-                            <Button color="primary" auto style={{ marginRight: "10px" }}>
+                            <Button color="primary" auto style={{ marginRight: "30px" }}>
                                 Send
                             </Button>
                             <Button color="error" auto style={{ marginLeft: "10px" }}>
@@ -144,7 +145,7 @@ const ContactPage = () => {
 
                     <div className="contact-us">
                         <div className="contact-us-title">
-                            <h2>Our Contacts</h2>
+                            <h2>VIC<span style={{color: "#0072F5"}}>OIN</span> Socials</h2>
                         </div>
                         <div className="contact-links">
                             <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-59-512.png'/>Telegram</a>

@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+// import React, {useEffect, useState} from "react";
 import Navbar from "../Components/Navbar";
 import { Table } from '@nextui-org/react';
 // import styles from "./src/ComponentsUI.scss";
-import axios from "axios";
+// import axios from "axios";
 
 const CryptoTable = () => {
 
@@ -22,7 +22,7 @@ const CryptoTable = () => {
             <h1 style={{
                 textAlign: "center",
                 padding: "20px",
-            }}>Crypto <span className="primary">Overview</span></h1>
+            }}>Sells <span className="primary">Overview</span></h1>
 
 
             <Table

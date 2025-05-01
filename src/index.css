@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
 :root{
-  --primary: #0072F5
+  --primary: #7A6A4F
 ;
-  --background: #ebf3ff;
+  --background: #D7B899;
 }
 
 .primary{
@@ -22,7 +22,7 @@ ul{
 }
 
 ul:hover{
-  color: #5d8fff;
+  color: #FFF8F0;
 }
 
 .container{
@@ -67,7 +67,7 @@ p{font-size: 1.2rem;}
 }
 
 .btn:hover{
-  box-shadow: rgb(152, 185, 255) 0px 0px 15px;
+  box-shadow: rgba(193, 154, 107, 0.6) 0px 0px 15px;
   transition: 0.5s;
 }
 
@@ -82,7 +82,7 @@ input{
 }
 
 .input-style:focus{
-  outline: 1px solid #105bff;
+  outline: 1px solid #3B2F2F;
 }
 
 @media screen and (max-width: 768px) {
@@ -100,3 +100,11 @@ input{
   }
 }
 
+.footer a {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: white;
+}

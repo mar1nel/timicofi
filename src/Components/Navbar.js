@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="header">
             <div className="container">
                 <h2>
-                    vic<span className="primary">oin</span>
+                    Timi<span className="primary">cofi</span>
                 </h2>
                 <ul className={click ? "nav-menu active" : "nav-menu"}>
                     <li>
@@ -40,15 +40,15 @@ const Navbar = () => {
                         }}
                         whileTap={{ scale: 0.95, duration: 0.5 }}
                     >
-                        Connect Wallet NOW
+                        Buy our coffee
                     </motion.button>
                 </div>
 
                 <div className="hamburger" onClick={handleClick}>
                     {click ? (
-                        <FaTimes size={18} style={{ color: "#5d8efd" }} />
+                        <FaTimes size={18} style={{ color: "#6F4E37" }} />
                     ) : (
-                        <FaBars size={20} style={{ color: "#5d8efd" }} />
+                        <FaBars size={20} style={{ color: "#6F4E37" }} />
                     )}
                 </div>
             </div>

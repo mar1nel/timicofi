@@ -26,21 +26,9 @@ const ContactPage = () => {
                             display: "inline-block",
                             verticalAlign: "middle",
                             margin: "0",
-                        }}>Contact Our</h1>
+                        }}>Contact Our Team</h1>
 
-                        <Text
-                            h1
-                            css={{
-                                textGradient: "45deg, $blue600 -20%, $blue700 50%",
-                                display: "inline-block",
-                                verticalAlign: "middle",
-                                fontWeight: "bold",
-                                margin: "0",
-                            }}
-                            weight="bold"
-                        >Team</Text>
-
-                        <img src="https://em-content.zobj.net/thumbs/120/apple/354/blue-heart_1f499.png" alt="/"
+                        <img src="https://em-content.zobj.net/source/apple/271/brown-heart_1f90e.png" alt="/"
                              style={{ width: "60px", height: "60px", marginTop: "20px", position: "relative", left: "20px", top: "20px" }} />
                     </div>
 
@@ -145,7 +133,7 @@ const ContactPage = () => {
 
                     <div className="contact-us">
                         <div className="contact-us-title">
-                            <h2>VIC<span style={{color: "#0072F5"}}>OIN</span> Socials</h2>
+                            <h2>Timi<span style={{color: "#6F4E37"}}>cofi</span> Socials</h2>
                         </div>
                         <div className="contact-links">
                             <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-59-512.png'/>Telegram</a>

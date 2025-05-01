@@ -1,61 +1,101 @@
-.contact-bg{
-  width: 100%;
-  padding: 7rem 0;
-  margin-top: -110px;
-  background-color: var(--background);
-  clip-path: polygon(0 0%, 100% 10%, 100% 100%, 0% 80%);
-}
+.contact-bg {
+  background-color: #FFF8F0;
+  padding: 3rem 1rem;
 
-.contact-form{
-  background-color: white;
-  align-items: center;
-  //margin: auto;
-  justify-content: center;
-  width: 600px;
-  height: 520px;
-  box-shadow: 0 0px 40px rgb(0 0 0 / 0.15);
-  border-radius: 10px;
-  border-color: #0072F5;
-  //border: 1px solid red;
+  h1 {
+    color: #3B2F2F;
+  }
+
+  p {
+    color: #7A6A4F;
+    font-size: 1.1rem;
+  }
 }
 
 .contact-hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  //border: 1px solid red;
-  width: 100%;
-}
+  background-color: #F5E6DA;
+  padding: 2rem;
 
-.contact-us {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 260px;
-  margin-bottom: 100px;
-  //border: 1px solid red;
-}
+  .contact-form {
+    margin-bottom: 3rem;
 
-.contact-us-title {
-  text-align: center;
-  margin-bottom: 20px;
-  //border: 1px solid red;
-}
+    h2 {
+      color: #3B2F2F;
+    }
 
-.contact-links{
-  flex-direction: column;
-  display: flex;
-}
+    input,
+    textarea {
+      background-color: #fffaf6 !important;
+      border-color: #C19A6B !important;
+    }
 
-.socials{
-  //color: #0072F5;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
-  width: 25px;
-  height: 25px;
-  margin-top: 10px;
-  margin-right: 20px;
-  text-decoration: none;
+    input::placeholder,
+    textarea::placeholder {
+      color: #A98D7A;
+    }
+
+    .css-dev-only-do-not-override-1qfezbu {
+      background-color: #FFF8F0 !important;
+    }
+
+    button {
+      font-weight: 600;
+    }
+
+    button[aria-label="Send"] {
+      background-color: #6F4E37;
+      color: white;
+
+      &:hover {
+        box-shadow: 0 0 12px rgba(193, 154, 107, 0.6);
+      }
+    }
+
+    button[aria-label="Cancel"] {
+      background-color: #C19A6B;
+      color: white;
+    }
+  }
+
+  .contact-us-title {
+    text-align: center;
+    margin-bottom: 1rem;
+
+    h2 {
+      color: #3B2F2F;
+    }
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #3B2F2F;
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      .socials {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) saturate(100%) invert(19%) sepia(14%) saturate(1194%) hue-rotate(355deg) brightness(95%) contrast(95%);
+        transition: filter 0.3s ease;
+      }
+
+      &:hover {
+        color: white;
+
+        .socials {
+          filter: brightness(0) saturate(100%) invert(95%) sepia(9%) saturate(216%) hue-rotate(5deg) brightness(120%) contrast(100%);
+        }
+      }
+    }
+  }
 }

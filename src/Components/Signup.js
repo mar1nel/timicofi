@@ -24,7 +24,7 @@ const Signup = () => {
                                 animationDuration: 0.5
                             }}
                 >
-                    <img src={Heart} alt='' />
+                    <img style={{marginBottom: "40px"}} src={Heart} alt='' />
                 </motion.div>
 
                 <div className='right'>

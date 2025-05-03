@@ -15,7 +15,7 @@ const Hero = () => {
                     <p>Artisan-crafted non-alcoholic brown beer meets energizing botanicals</p>
 
                     <div className='input-container'>
-                        <input className='input-style' type='email' placeholder='Join our coffee club' />
+                        <input className='input-style' style={{marginBottom: "20px"}} type='email' placeholder='Join our coffee club' />
                         <button className='btn'>Get Started</button>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ const Navbar = () => {
     const handleBuyClick = () => {
         const isLoggedIn = localStorage.getItem("loggedIn") === "true";
         if (isLoggedIn) {
-            navigate("/shop");
+            navigate("/shop-page");
         } else {
             navigate("/auth");
         }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Input, Button, Card } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 
 export default function AuthPage() {
     const [isLogin, setIsLogin] = useState(true);
@@ -91,7 +92,11 @@ export default function AuthPage() {
         }
     };
 
-
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem("loggedIn");
+        navigate("/"); // or "/auth"
+    };
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-zinc-100 to-slate-200 px-4">
@@ -129,6 +134,9 @@ export default function AuthPage() {
                     <Button type="submit" color="primary" className="mt-2">
                         {isLogin ? "Login" : "Sign Up"}
                     </Button>
+
+
+
                 </form>
                 <p className="text-sm text-center mt-4">
                     {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
@@ -140,7 +148,14 @@ export default function AuthPage() {
                         {isLogin ? "Sign Up" : "Login"}
                     </button>
                 </p>
+
+
             </Card>
+
+            <Button color="danger" onClick={handleLogout}>
+                Logout
+            </Button>
+
         </div>
     );
 }

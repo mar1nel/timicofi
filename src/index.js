@@ -2,10 +2,11 @@ import {createBrowserRouter, RouterProvider, } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import React from 'react';
 import App from './App';
+import {CartProvider} from "./Context/CartContext";
 import CryptoTable from "./Pages/CryptoTable";
 import ContactPage from "./Pages/ContactPage";
-import AuthPage from "./Pages/AuthPage";
 
+import AuthPage from "./Pages/AuthPage";
 import './index.css';
 import ShopPage from "./Pages/ShopPage";
 
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
 
 ReactDOM.render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <CartProvider>
+            <RouterProvider router={router} />
+        </CartProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );

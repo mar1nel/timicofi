@@ -60,7 +60,6 @@ const ShopPage = () => {
         <>
             <Navbar />
 
-            {/* Featured Blends */}
             <section className="py-16 px-4 bg-white">
                 <h2 className="text-3xl font-bold text-left text-brown-800 mb-6">
                     Featured Blends
@@ -90,10 +89,12 @@ const ShopPage = () => {
                         {discounted.map((item) => (
                             <CoffeeCard
                                 key={item.id}
+                                coffeeId={item.id}
                                 name={item.name}
                                 description={item.description}
                                 image={item.image}
                             />
+
                         ))}
                     </div>
                 </div>

@@ -5,18 +5,12 @@ const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState(null);
+    const [cart, setCart] = useState({ items: [] });
 
     //cand user-ul apasa butonul de cart tu sa mai faci inca o data un request aici sa se vada itemele corespunzator
     const fetchCart = async () => {
         try {
-            const res = await fetch(
-                "http://localhost:8080/reports/view?userId=1",
-                {
-                    method: "GET",
-                    headers: { "Accept": "application/json" },
-                }
-            );
+            const res = await fetch("http://localhost:8080/cart/view?userId=1")
 
             if (!res.ok) {
                 throw new Error(await res.text());
@@ -31,15 +25,13 @@ export const CartProvider = ({ children }) => {
     const addToCart = async (coffeeId, qty = 1) => {
         try {
             const res = await fetch(
-                "http://localhost:8080/reports/items?userId=1", // hard‑coded user #1
+                `http://localhost:8080/cart/add?userId=1&coffeeId=${coffeeId}&quantity=${qty}`,
                 {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ coffeeId, qty }),
                 }
             );
+
+
 
             if (!res.ok) {
                 throw new Error(await res.text());
@@ -58,6 +50,24 @@ export const CartProvider = ({ children }) => {
     useEffect(() => {
         fetchCart();
     }, []);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/cart/ping")
+            .then(res => res.text())
+            .then(txt => console.log("Ping response:", txt))
+            .catch(err => console.error("Ping failed:", err));
+    }, []);
+
+
+    useEffect(() => {
+        fetch("http://localhost:8080/cart/view?userId=1")
+            .then(res => res.json())
+            .then(data => console.log("Cart data:", data))
+            .catch(err => console.error("Cart view failed:", err));
+    }, []);
+
+
+
 
     return (
         <CartContext.Provider value={{ cart, addToCart, fetchCart, clearCart }}>

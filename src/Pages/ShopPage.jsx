@@ -56,6 +56,21 @@ const ShopPage = () => {
         ]);
     }, []);
 
+    useEffect(() => {
+        const fetchCoffees = async () => {
+            try {
+                const res = await fetch("http://localhost:8080/reports/coffees");
+                const data = await res.json();
+                setProducts(data);
+            } catch (err) {
+                console.error("Failed to load coffees", err);
+            }
+        };
+
+        fetchCoffees();
+    }, []);
+
+
     return (
         <>
             <Navbar />

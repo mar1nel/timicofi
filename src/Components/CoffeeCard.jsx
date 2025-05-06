@@ -24,11 +24,11 @@ const CoffeeCard = ({ coffeeId, name, description, image }) => {
                 <button className="add-to-cart" onClick={handleAdd}>
                     Add to Cart
                 </button>
-                <button className="like-btn">
-                    <div style={{ transform: "scale(0.9)", transformOrigin: "center" }}>
+                <div className="like-btn" role="button" tabIndex={0}>
+                    <div style={{ transform: "scale(0.9)" }}>
                         <HeartTooltip />
                     </div>
-                </button>
+                  </div>
             </div>
 
             <div className="card__overlay"></div>

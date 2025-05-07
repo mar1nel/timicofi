@@ -23,51 +23,28 @@ export const CartProvider = ({ children }) => {
     };
 
     const addToCart = async (coffeeId, qty = 1) => {
-        try {
-            const res = await fetch(
-                `http://localhost:8080/cart/add?userId=1&coffeeId=${coffeeId}&quantity=${qty}`,
-                {
-                    method: "POST",
-                }
-            );
-
-
-
-            if (!res.ok) {
-                throw new Error(await res.text());
+        const res = await fetch(
+            "http://localhost:8080/reports/items?userId=1",
+            {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({coffeeId, qty}),
             }
-
-            const cart = await res.json();
-            setCart(cart);
-        } catch (err) {
-            console.error("Failed to add to cart:", err);
-        }
-    };
-
-    //
+        );
+    }
     const clearCart = () => setCart(null); // Optional logic
 
     useEffect(() => {
         fetchCart();
     }, []);
 
-    useEffect(() => {
-        fetch("http://localhost:8080/cart/ping")
-            .then(res => res.text())
-            .then(txt => console.log("Ping response:", txt))
-            .catch(err => console.error("Ping failed:", err));
-    }, []);
-
 
     useEffect(() => {
-        fetch("http://localhost:8080/cart/view?userId=1")
+        fetch("http://localhost:8080/reports/view?userId=1")
             .then(res => res.json())
             .then(data => console.log("Cart data:", data))
             .catch(err => console.error("Cart view failed:", err));
     }, []);
-
-
-
 
     return (
         <CartContext.Provider value={{ cart, addToCart, fetchCart, clearCart }}>

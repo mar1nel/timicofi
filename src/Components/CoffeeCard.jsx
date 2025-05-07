@@ -1,14 +1,20 @@
+// src/Components/CoffeeCard.jsx
 import React from "react";
-import "./CoffeeCard.scss";
+import { useCart } from "../Context/CartContext";
 import HeartTooltip from "./HeartTooltip";
-import { useCart } from "../Context/CartContext"; // adjust path if needed
+import "./CoffeeCard.scss";
 
-const CoffeeCard = ({ coffeeId, name, description, image }) => {
-
+export default function CoffeeCard({
+                                       coffeeId,
+                                       name,
+                                       description,
+                                       price,
+                                       image,
+                                   }) {
     const { addToCart } = useCart();
+
     const handleAdd = () => {
         addToCart(coffeeId, 1);
-        alert("Added to cart ✅");
     };
 
     return (
@@ -16,27 +22,26 @@ const CoffeeCard = ({ coffeeId, name, description, image }) => {
             <img src={image} alt={name} className="card__icon" />
 
             <div className="card__content">
-                <p className="card__title">{name}</p>
+                <h3 className="card__title">{name}</h3>
                 <p className="card__description">{description}</p>
+                <p className="card__price">${price.toFixed(2)}</p>
             </div>
 
             <div className="card__actions">
-                <button className="add-to-cart" onClick={handleAdd}>
+                <button
+                    className="add-to-cart"
+                    onClick={handleAdd}
+                >
                     Add to Cart
                 </button>
-                <div className="like-btn" role="button" tabIndex={0}>
-                    <div style={{ transform: "scale(0.9)" }}>
+                <button className="like-btn">
+                    <div style={{ transform: "scale(0.9)", transformOrigin: "center" }}>
                         <HeartTooltip />
                     </div>
-                  </div>
+                </button>
             </div>
 
-            <div className="card__overlay"></div>
+            <div className="card__overlay" />
         </div>
     );
-};
-
-
-
-
-export default CoffeeCard;
+}

@@ -119,6 +119,13 @@
 
 }
 
+.card__price {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #6f4e37;  // coffee-brown
+}
+
 .card__overlay {
   position: absolute;
   bottom: 0;

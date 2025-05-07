@@ -10,7 +10,7 @@ export const CartProvider = ({ children }) => {
     //cand user-ul apasa butonul de cart tu sa mai faci inca o data un request aici sa se vada itemele corespunzator
     const fetchCart = async () => {
         try {
-            const res = await fetch("http://localhost:8080/cart/view?userId=1")
+            const res = await fetch("http://localhost:8080/reports/view?userId=1")
 
             if (!res.ok) {
                 throw new Error(await res.text());
@@ -32,12 +32,23 @@ export const CartProvider = ({ children }) => {
             }
         );
     }
-    const clearCart = () => setCart(null); // Optional logic
+
+    // read the current userId from localStorage
+    const userId = localStorage.getItem("userId");
 
     useEffect(() => {
-        fetchCart();
-    }, []);
+        if (userId) {
+            fetchCart();
+        } else {
+            // if no userId, reset to empty
+            setCart({ items: [] });
+        }
+    }, [userId]);
 
+    const clearCart = () => {
+           localStorage.removeItem("userId");
+           setCart({ items: [] });
+        };
 
     useEffect(() => {
         fetch("http://localhost:8080/reports/view?userId=1")
@@ -47,7 +58,7 @@ export const CartProvider = ({ children }) => {
     }, []);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, fetchCart, clearCart }}>
+        <CartContext.Provider value={{ cart, addToCart, fetchCart, clearCart, currentUserId: userId}}>
             {children}
         </CartContext.Provider>
     );

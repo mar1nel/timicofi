@@ -28,17 +28,17 @@ export default function CoffeeCard({
             </div>
 
             <div className="card__actions">
-                <button
+                <div
                     className="add-to-cart"
                     onClick={handleAdd}
                 >
                     Add to Cart
-                </button>
-                <button className="like-btn">
+                </div>
+                <div className="like-btn">
                     <div style={{ transform: "scale(0.9)", transformOrigin: "center" }}>
                         <HeartTooltip />
                     </div>
-                </button>
+                </div>
             </div>
 
             <div className="card__overlay" />

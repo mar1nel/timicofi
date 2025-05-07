@@ -1,11 +1,10 @@
-// src/Pages/ShopPage.jsx
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import CoffeeCard from "../Components/CoffeeCard";
 
 const ShopPage = () => {
     const [products, setProducts] = useState([]);
-    const [discounted, setDiscounted] = useState([]);
+    // const [discounted, setDiscounted] = useState([]);
 
     // Fetch the catalog from the backend
     useEffect(() => {
@@ -14,6 +13,7 @@ const ShopPage = () => {
                 const res = await fetch("http://localhost:8080/reports/coffees");
                 if (!res.ok) throw new Error(await res.text());
                 const data = await res.json(); // [{ id, name, description, price, ... }, …]
+                setProducts(data);
                 setProducts(data);
             } catch (err) {
                 console.error("Failed to load coffees:", err);

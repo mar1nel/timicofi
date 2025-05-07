@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Input, Button, Card } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
+import {useCart} from "../Context/CartContext";
 
 export default function AuthPage() {
+    const navigate = useNavigate();
+    const { clearCart } = useCart();
     const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({
         email: "",
@@ -12,48 +15,42 @@ export default function AuthPage() {
 
     const toggleForm = () => {
         setIsLogin(!isLogin);
-        setFormData({
-            email: "",
-            password: "",
-            confirmPassword: "",
-        });
+        setFormData({ email: "", password: "", confirmPassword: "" });
     };
 
     const handleChange = (e) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Password match check on signup
         if (!isLogin && formData.password !== formData.confirmPassword) {
             alert("Passwords do not match!");
             return;
         }
 
         if (isLogin) {
-            // LOGIN LOGIC
+            // LOGIN logic
             try {
                 const response = await fetch("http://localhost:8080/auth/login", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         email: formData.email,
                         password: formData.password,
                     }),
                 });
 
-                const message = await response.text();
+                const data = await response.json();
+                const { userId, message } = data;
 
                 if (response.ok) {
-                    alert(message); // Optional
+                    localStorage.setItem("userId", userId);
                     localStorage.setItem("loggedIn", "true");
-                    window.location.href = "/shop"; // Or use useNavigate
+                    alert(message);
+                    navigate("/shop-page");
                 } else {
                     alert(`Login failed: ${message}`);
                 }
@@ -61,41 +58,38 @@ export default function AuthPage() {
                 console.error("Login error:", err);
                 alert("Server error. Try again later.");
             }
+        } else {
+            // SIGN UP logic
+            try {
+                const response = await fetch("http://localhost:8080/auth/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        username: formData.email.split("@")[0],
+                        email: formData.email,
+                        password: formData.password,
+                    }),
+                });
 
-            return;
-        }
-
-        // SIGN UP LOGIC
-        try {
-            const response = await fetch("http://localhost:8080/auth/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    username: formData.email.split("@")[0],
-                    email: formData.email,
-                    password: formData.password,
-                }),
-            });
-
-            const message = await response.text();
-
-            if (response.ok) {
-                alert(message);
-            } else {
-                alert(`Error: ${message}`);
+                const message = await response.text();
+                if (response.ok) {
+                    alert(message);
+                    setIsLogin(true);
+                } else {
+                    alert(`Registration failed: ${message}`);
+                }
+            } catch (err) {
+                console.error("Signup error:", err);
+                alert("Server error. Try again later.");
             }
-        } catch (err) {
-            console.error("Signup error:", err);
-            alert("Server error. Try again later.");
         }
     };
 
-    const navigate = useNavigate();
     const handleLogout = () => {
+        localStorage.removeItem("userId");
         localStorage.removeItem("loggedIn");
-        navigate("/"); // or "/auth"
+        clearCart();
+        navigate("/auth");
     };
 
     return (
@@ -111,7 +105,7 @@ export default function AuthPage() {
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
-                        isRequired
+                        required
                     />
                     <Input
                         label="Password"
@@ -119,7 +113,7 @@ export default function AuthPage() {
                         type="password"
                         value={formData.password}
                         onChange={handleChange}
-                        isRequired
+                        required
                     />
                     {!isLogin && (
                         <Input
@@ -128,35 +122,25 @@ export default function AuthPage() {
                             type="password"
                             value={formData.confirmPassword}
                             onChange={handleChange}
-                            isRequired
+                            required
                         />
                     )}
                     <Button type="submit" color="primary" className="mt-2">
                         {isLogin ? "Login" : "Sign Up"}
                     </Button>
-
-
-
                 </form>
                 <p className="text-sm text-center mt-4">
                     {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-                    <button
-                        type="button"
-                        className="text-blue-600 underline"
-                        onClick={toggleForm}
-                    >
+                    <button type="button" className="text-blue-600 underline" onClick={toggleForm}>
                         {isLogin ? "Sign Up" : "Login"}
                     </button>
                 </p>
-
-
             </Card>
-
-            <Button color="danger" onClick={handleLogout}>
-                Logout
-            </Button>
-
+            {localStorage.getItem("loggedIn") === "true" && (
+                <Button color="danger" onClick={handleLogout} className="mt-4">
+                    Logout
+                </Button>
+            )}
         </div>
     );
 }
-

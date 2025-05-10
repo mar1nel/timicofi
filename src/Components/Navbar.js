@@ -34,10 +34,10 @@ export default function Navbar() {
                 </h2>
 
                 <ul className={click ? "nav-menu active" : "nav-menu"}>
-                    <li><Link to="/featured-page">Featured</Link></li>
-                    <li><Link to="/shop-page">Our Coffee</Link></li>
-                    <li><Link to="/table">Tables</Link></li>
+                    {/*<li><Link to="/featured-page">Featured</Link></li>*/}
+                    {/*<li><Link to="/shop-page">Our Coffee</Link></li>*/}
                     <li><Link to="/">Home</Link></li>
+                    <li><Link to="/table">Tables</Link></li>
                     <li><Link to="/shop-page">Shop</Link></li>
                     <li><Link to="/contact-page">Contact</Link></li>
                 </ul>

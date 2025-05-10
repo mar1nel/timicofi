@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Input, Button, Card } from "@nextui-org/react";
-import { useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import {Input, Button, Card} from "@nextui-org/react";
+import {useNavigate} from "react-router-dom";
 import {useCart} from "../Context/CartContext";
 
 export default function AuthPage() {
     const navigate = useNavigate();
-    const { clearCart, fetchCart } = useCart();
+    const {clearCart, fetchCart} = useCart();
     const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({
         email: "",
@@ -15,11 +15,11 @@ export default function AuthPage() {
 
     const toggleForm = () => {
         setIsLogin(!isLogin);
-        setFormData({ email: "", password: "", confirmPassword: "" });
+        setFormData({email: "", password: "", confirmPassword: ""});
     };
 
     const handleChange = (e) => {
-        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+        setFormData((prev) => ({...prev, [e.target.name]: e.target.value}));
     };
 
     const handleSubmit = async (e) => {
@@ -36,7 +36,7 @@ export default function AuthPage() {
             try {
                 const response = await fetch("http://localhost:8080/auth/login", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
                         email: formData.email,
                         password: formData.password,
@@ -46,7 +46,7 @@ export default function AuthPage() {
                 // const data = await response.json();
                 // const { userId, message } = data;
 
-                const { userId, message } = await response.json();
+                const {userId, message} = await response.json();
                 if (response.ok) {
                     localStorage.setItem("userId", String(userId));
                     localStorage.setItem("loggedIn", "true");
@@ -65,7 +65,7 @@ export default function AuthPage() {
             try {
                 const response = await fetch("http://localhost:8080/auth/register", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
                         username: formData.email.split("@")[0],
                         email: formData.email,
@@ -88,14 +88,15 @@ export default function AuthPage() {
     };
 
     const handleLogout = () => {
-        clearCart();
+        // clearCart();
         localStorage.removeItem("userId");
         localStorage.removeItem("loggedIn");
         navigate("/auth");
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-zinc-100 to-slate-200 px-4">
+        <div
+            className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-zinc-100 to-slate-200 px-4">
             <Card className="w-full max-w-md shadow-xl rounded-2xl p-6">
                 <h2 className="text-xl font-semibold text-center mb-6">
                     {isLogin ? "Login to Coffee Project" : "Create an Account"}

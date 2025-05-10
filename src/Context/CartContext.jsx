@@ -1,30 +1,28 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {createContext, useContext, useEffect, useState} from "react";
 
 const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
-export const CartProvider = ({ children }) => {
-    // read the current userId from localStorage
+export const CartProvider = ({children}) => {
     const userId = localStorage.getItem("userId");
-    const [cart, setCart] = useState({ id: null, items: [] });
+    const [cart, setCart] = useState({id: null, items: []});
 
-    // fetch or clear based on userId
     useEffect(() => {
         console.log("[CartContext] currentUserId:", userId);
         if (userId) {
             fetchCart();
         } else {
             console.log("[CartContext] no userId, resetting cart");
-            setCart({ id: null, items: [] });
+            setCart({id: null, items: []});
         }
     }, [userId]);
 
     const fetchCart = async () => {
-        if (!userId) return setCart({ id: null, items: [] });
-            try {
-                const res = await fetch(
-                    `http://localhost:8080/reports/view?userId=${userId}`
-                );
+        if (!userId) return setCart({id: null, items: []});
+        try {
+            const res = await fetch(
+                `http://localhost:8080/reports/view?userId=${userId}`
+            );
             const data = await res.json();
             console.log("[CartContext] fetched cart:", data);
             setCart(data);
@@ -44,8 +42,8 @@ export const CartProvider = ({ children }) => {
                 `http://localhost:8080/reports/items?userId=${userId}`,
                 {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ coffeeId, qty }),
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({coffeeId, qty}),
                 }
             );
             if (!res.ok) throw new Error(await res.text());
@@ -56,16 +54,12 @@ export const CartProvider = ({ children }) => {
         }
     };
 
-    // const clearCart = () => {
-    //     // localStorage.removeItem("userId");
-    //     setCart({ id: null, items: [] });
-    // };
     const clearCart = async () => {
         if (!userId) return;
         try {
             const res = await fetch(
                 `http://localhost:8080/reports/clear?userId=${userId}`,
-                { method: "POST" }
+                {method: "POST"}
             );
             if (!res.ok) throw new Error(await res.text());
             const empty = await res.json();
@@ -77,7 +71,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, fetchCart, clearCart, currentUserId: userId }}>
+        <CartContext.Provider value={{cart, addToCart, fetchCart, clearCart, currentUserId: userId}}>
             {children}
         </CartContext.Provider>
     );

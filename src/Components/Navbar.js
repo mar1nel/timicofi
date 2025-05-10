@@ -1,23 +1,20 @@
-import { FaBars, FaTimes, FaShoppingCart } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import {FaBars, FaTimes, FaShoppingCart} from "react-icons/fa";
+import {Link, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import { useCart } from "../Context/CartContext";
-import { motion } from "framer-motion";
+import {useCart} from "../Context/CartContext";
+import {motion} from "framer-motion";
 import "./Navbar.scss";
 
 export default function Navbar() {
     const [click, setClick] = useState(false);
-    const { cart } = useCart();
+    const {cart} = useCart();
     const navigate = useNavigate();
     const [badgeClass, setBadgeClass] = useState("");
 
-    // sum up all quantities in the cart
     const totalItems = cart?.items?.reduce((sum, i) => sum + i.qty, 0) || 0;
-    // whenever totalItems changes, trigger the pop animation
     useEffect(() => {
         if (totalItems > 0) {
             setBadgeClass("pop");
-            // remove the class so it can fire again next time
             const timer = setTimeout(() => setBadgeClass(""), 400);
             return () => clearTimeout(timer);
         }
@@ -32,7 +29,7 @@ export default function Navbar() {
     return (
         <div className="header">
             <div className="container">
-                <h2 style={{ marginLeft: 20 }}>
+                <h2 style={{marginLeft: 20}}>
                     Timi<span className="primary">cofi</span>
                 </h2>
 
@@ -45,22 +42,23 @@ export default function Navbar() {
                     <li><Link to="/contact-page">Contact</Link></li>
                 </ul>
 
-                <div className="btn_group" style={{ marginRight: "20px", display: "flex", alignItems: "center", gap: "1rem" }}>
+                <div className="btn_group"
+                     style={{marginRight: "20px", display: "flex", alignItems: "center", gap: "1rem"}}>
                     <motion.button
                         className="btn"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{scale: 1.1}}
+                        whileTap={{scale: 0.95}}
                         onClick={handleBuyClick}
                     >
                         Account
                     </motion.button>
                 </div>
 
-                    <div className="icon-group">
+                <div className="icon-group">
                     <div
                         className="cart-icon"
-                        onClick={() => navigate("/checkout")}                    >
-                        <FaShoppingCart size={24} />
+                        onClick={() => navigate("/checkout")}>
+                        <FaShoppingCart size={24}/>
                         {totalItems > 0 && (
                             <span className={`cart-badge ${badgeClass}`}>
                 {totalItems}
@@ -69,8 +67,8 @@ export default function Navbar() {
                     </div>
                     <div className="hamburger" onClick={() => setClick(!click)}>
                         {click
-                            ? <FaTimes size={18} />
-                            : <FaBars size={20} />
+                            ? <FaTimes size={18}/>
+                            : <FaBars size={20}/>
                         }
                     </div>
                 </div>

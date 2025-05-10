@@ -43,11 +43,12 @@ export default function AuthPage() {
                     }),
                 });
 
-                const data = await response.json();
-                const { userId, message } = data;
+                // const data = await response.json();
+                // const { userId, message } = data;
 
+                const { userId, message } = await response.json();
                 if (response.ok) {
-                    localStorage.setItem("userId", userId);
+                    localStorage.setItem("userId", String(userId));
                     localStorage.setItem("loggedIn", "true");
                     alert(message);
                     navigate("/shop-page");

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Navbar from "../Components/Navbar";
 import CoffeeCard from "../Components/CoffeeCard";
 
@@ -23,9 +23,8 @@ const ShopPage = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar/>
 
-            {/* Featured Blends */}
             <section className="py-16 px-4 bg-white">
                 <h2 className="text-3xl font-bold text-left text-brown-800 mb-6">
                     Featured Blends
@@ -38,13 +37,12 @@ const ShopPage = () => {
                             name={c.name}
                             description={c.description}
                             price={c.price}
-                            image={c.imageUrl /* or c.image if that’s your field */}
+                            image={c.imageUrl}
                         />
                     ))}
                 </div>
             </section>
 
-            {/* Discount Picks */}
             <section className="py-16 px-4 bg-yellow-50">
                 <h2 className="text-3xl font-bold text-left text-brown-800 mb-6">
                     Discount Picks
@@ -57,7 +55,7 @@ const ShopPage = () => {
                             name={c.name}
                             description={c.description}
                             price={c.price}
-                            image={c.imageUrl /* or c.image if that’s your field */}
+                            image={c.imageUrl}
                         />
                     ))}
                 </div>

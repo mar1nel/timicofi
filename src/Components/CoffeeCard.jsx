@@ -1,4 +1,3 @@
-// src/Components/CoffeeCard.jsx
 import React from "react";
 import { useCart } from "../Context/CartContext";
 import HeartTooltip from "./HeartTooltip";
@@ -24,7 +23,7 @@ export default function CoffeeCard({
             <div className="card__content">
                 <h3 className="card__title">{name}</h3>
                 <p className="card__description">{description}</p>
-                <p className="card__price">${price.toFixed(2)}</p>
+                <p className="card__price">${price}</p>
             </div>
 
             <div className="card__actions">

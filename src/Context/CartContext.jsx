@@ -56,10 +56,25 @@ export const CartProvider = ({ children }) => {
         }
     };
 
-    const clearCart = () => {
-        localStorage.removeItem("userId");
-        setCart({ id: null, items: [] });
+    // const clearCart = () => {
+    //     // localStorage.removeItem("userId");
+    //     setCart({ id: null, items: [] });
+    // };
+    const clearCart = async () => {
+        if (!userId) return;
+        try {
+            const res = await fetch(
+                `http://localhost:8080/reports/clear?userId=${userId}`,
+                { method: "POST" }
+            );
+            if (!res.ok) throw new Error(await res.text());
+            const empty = await res.json();
+            setCart(empty);
+        } catch (e) {
+            console.error("Failed to clear cart:", e);
+        }
     };
+
 
     return (
         <CartContext.Provider value={{ cart, addToCart, fetchCart, clearCart, currentUserId: userId }}>

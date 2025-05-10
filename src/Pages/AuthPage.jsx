@@ -88,9 +88,9 @@ export default function AuthPage() {
     };
 
     const handleLogout = () => {
+        clearCart();
         localStorage.removeItem("userId");
         localStorage.removeItem("loggedIn");
-        clearCart();
         navigate("/auth");
     };
 

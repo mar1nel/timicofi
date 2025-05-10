@@ -9,6 +9,7 @@ import ContactPage from "./Pages/ContactPage";
 import AuthPage from "./Pages/AuthPage";
 import './index.css';
 import ShopPage from "./Pages/ShopPage";
+import CheckoutPage from "./Pages/CheckoutPage";
 
 
 const router = createBrowserRouter([
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     { path: "/auth", element: <AuthPage /> },
     { path: "/table", element: <CryptoTable /> },
     { path: "/shop-page", element: <ShopPage /> },
+    { path: "/checkout", element: <CheckoutPage />},
     { path: "/contact-page", element: <ContactPage /> },
 ]);
 

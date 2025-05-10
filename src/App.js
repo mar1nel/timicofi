@@ -13,7 +13,6 @@ function App() {
             <Hero/>
             <Featured/>
             <Signup />
-            {/*<AuthPage />*/}
             <Footer />
 
         </>

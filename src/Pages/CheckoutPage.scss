@@ -1,0 +1,110 @@
+.checkout {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #6f4e37;
+  }
+
+  .text-center {
+    text-align: center;
+    color: #555;
+  }
+
+  &-list {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+
+    .checkout-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      align-items: center;
+      transition: background 0.2s ease;
+
+      &:not(:last-child) {
+        border-bottom: 1px dashed #eee;
+      }
+
+      &:hover {
+        background: #f9f9f9;
+      }
+
+      .item-desc {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .item-total {
+        font-weight: 600;
+        color: #6f4e37;
+      }
+    }
+  }
+
+  &-summary {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+
+    span:first-child {
+      color: #666;
+    }
+
+    span:last-child {
+      color: #000;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    button {
+      min-width: 140px;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+      &.proceed {
+        background: #6f4e37;
+        color: #fff;
+        border: none;
+
+        &:hover {
+          background: #593f2f;
+          transform: translateY(-2px) scale(1.02);
+        }
+      }
+
+      &.clear {
+        background: #f3e9d2;
+        color: #6f4e37;
+        border: 1px solid #cab050;
+
+        &:hover {
+          background: #e9d8b0;
+          transform: translateY(-2px) scale(1.02);
+        }
+      }
+    }
+  }
+}

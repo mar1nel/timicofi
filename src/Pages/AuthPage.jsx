@@ -5,7 +5,7 @@ import {useCart} from "../Context/CartContext";
 
 export default function AuthPage() {
     const navigate = useNavigate();
-    const { clearCart } = useCart();
+    const { clearCart, fetchCart } = useCart();
     const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({
         email: "",
@@ -50,6 +50,7 @@ export default function AuthPage() {
                 if (response.ok) {
                     localStorage.setItem("userId", String(userId));
                     localStorage.setItem("loggedIn", "true");
+                    fetchCart();
                     alert(message);
                     navigate("/shop-page");
                 } else {

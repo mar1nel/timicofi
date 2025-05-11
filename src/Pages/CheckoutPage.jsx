@@ -8,7 +8,7 @@ const stripePromise = loadStripe("pk_test_51RNBGm4Tagxb8m7TZCNHcqUywFhIoX2UmukID
 export default function CheckoutPage() {
     const {cart, clearCart} = useCart();
     const total = cart.items.reduce((sum, i) => sum + i.unitPrice * i.qty, 0);
- 
+
     const handleProceed = async () => {
         try {
             const resp = await fetch("http://localhost:8080/payments/create-session", {
@@ -39,14 +39,14 @@ export default function CheckoutPage() {
                 <span className="item-desc">
                   {item.name} × {item.qty}
                 </span>
-                                <span className="item-total">{item.lineTotal} Lei</span>
+                                <span className="item-total">{item.lineTotal} lei</span>
                             </div>
                         ))}
                     </div>
 
                     <div className="checkout-summary">
                         <span>Total:</span>
-                        <span>{total.toFixed(2)} Lei</span>
+                        <span>{total.toFixed(2)} lei</span>
                     </div>
 
                     <div className="checkout-actions">

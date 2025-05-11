@@ -1,6 +1,6 @@
 // import React, {useEffect, useState} from "react";
 import Navbar from "../Components/Navbar";
-import {Table} from '@nextui-org/react';
+import { Table } from '@nextui-org/react';
 // import styles from "./src/ComponentsUI.scss";
 // import axios from "axios";
 
@@ -16,7 +16,7 @@ const CryptoTable = () => {
     //     })
 
 
-    return (
+    return(
         <>
             <Navbar/>
             <h1 style={{
@@ -33,7 +33,7 @@ const CryptoTable = () => {
                 css={{
                     height: "auto",
                     minWidth: "100%",
-                    zIndex: "2",
+                    zIndex:"2",
                 }}
                 selectionMode="multiple">
 
@@ -94,7 +94,7 @@ const CryptoTable = () => {
                     noMargin
                     align="center"
                     rowsPerPage={10}
-                    onPageChange={(page) => console.log({page})}
+                    onPageChange={(page) => console.log({ page })}
                 />
 
             </Table>

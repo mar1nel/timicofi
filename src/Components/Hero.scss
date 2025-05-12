@@ -151,6 +151,26 @@
   }
 }
 
+.hero-container {
+  position: relative;
+}
+
+.decorative-img {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.decorative-img.mirrored {
+  transform: scaleX(-1);
+}
+
+/* utility */
+.mt-40 {
+  margin-top: 40px;
+}
+
+
 html,
 body,
 #root {

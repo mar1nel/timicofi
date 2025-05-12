@@ -3,6 +3,7 @@
   touch-action: none;
   cursor: grab;
   pointer-events: all;
+  z-index: 100;
 
   &:active {
     cursor: grabbing;

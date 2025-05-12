@@ -1,4 +1,4 @@
-.footer  {
+.footer {
   background-color: var(--background);
   padding: 5rem 0;
   clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 100%);
@@ -37,10 +37,11 @@
 
 @media screen and (max-width: 940px) {
   .footer .container {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .footer .col-1 {
     display: none;
+    padding: 20px;
   }
 }

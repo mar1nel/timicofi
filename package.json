@@ -11,7 +11,7 @@
     "autoprefixer": "^10.4.21",
     "axios": "^1.4.0",
     "canvas-confetti": "^1.6.0",
-    "framer-motion": "^10.18.0",
+    "framer-motion": "^10.12.9",
     "postcss": "^8.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

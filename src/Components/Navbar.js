@@ -1,6 +1,6 @@
+import React, {useState, useEffect} from "react";
 import {FaBars, FaTimes, FaShoppingCart} from "react-icons/fa";
 import {Link, useNavigate} from "react-router-dom";
-import React, {useEffect, useState} from "react";
 import {useCart} from "../Context/CartContext";
 import {motion} from "framer-motion";
 import "./Navbar.scss";
@@ -20,8 +20,7 @@ export default function Navbar() {
         }
     }, [totalItems]);
 
-
-    const handleBuyClick = () => {
+    const handleAccount = () => {
         const isLoggedIn = localStorage.getItem("loggedIn") === "true";
         navigate(isLoggedIn ? "/shop-page" : "/auth");
     };
@@ -29,47 +28,37 @@ export default function Navbar() {
     return (
         <div className="header">
             <div className="container">
-                <h2 style={{marginLeft: 20}}>
+                <h2 className="logo">
                     Timi<span className="primary">cofi</span>
                 </h2>
 
                 <ul className={click ? "nav-menu active" : "nav-menu"}>
-                    {/*<li><Link to="/featured-page">Featured</Link></li>*/}
-                    {/*<li><Link to="/shop-page">Our Coffee</Link></li>*/}
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/table">Tables</Link></li>
                     <li><Link to="/shop-page">Shop</Link></li>
                     <li><Link to="/contact-page">Contact</Link></li>
                 </ul>
 
-                <div className="btn_group"
-                     style={{marginRight: "20px", display: "flex", alignItems: "center", gap: "1rem"}}>
+                <div className="btn_group">
                     <motion.button
-                        className="btn"
+                        className="btn btn--account"
                         whileHover={{scale: 1.1}}
                         whileTap={{scale: 0.95}}
-                        onClick={handleBuyClick}
+                        onClick={handleAccount}
                     >
                         Account
                     </motion.button>
                 </div>
 
                 <div className="icon-group">
-                    <div
-                        className="cart-icon"
-                        onClick={() => navigate("/checkout")}>
+                    <div className="cart-icon" onClick={() => navigate("/checkout")}>
                         <FaShoppingCart size={24}/>
                         {totalItems > 0 && (
-                            <span className={`cart-badge ${badgeClass}`}>
-                {totalItems}
-              </span>
+                            <span className={`cart-badge ${badgeClass}`}>{totalItems}</span>
                         )}
                     </div>
                     <div className="hamburger" onClick={() => setClick(!click)}>
-                        {click
-                            ? <FaTimes size={18}/>
-                            : <FaBars size={20}/>
-                        }
+                        {click ? <FaTimes size={18}/> : <FaBars size={20}/>}
                     </div>
                 </div>
             </div>

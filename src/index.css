@@ -1,151 +1,110 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
-:root {
-    --primary: #ed2176;
-    --secondary: #63A375;
-    --secondarytwo: #CA6680;
-    --background: #D7B899;
+:root{
+  --primary: #7A6A4F
+;
+  --background: #D7B899;
 }
 
-.btn {
-    padding: 14px 32px;
-    border: 1px solid var(--primary);
-    background-color: var(--primary);
-    color: #fff;
-    border-radius: 24px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: box-shadow 0.3s;
+.primary{
+  color: var(--primary);
 }
 
-.btn--primary {
-    background-color: var(--primary);
-    border: 1px solid var(--primary);
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.btn--secondary {
-    background-color: var(--secondary);
-    border: 1px solid var(--secondary);
+ul{
+  list-style-type: none;
+  color: #333;
 }
 
-.btn--secondarytwo {
-    background-color: var(--secondarytwo);
-    border: 1px solid var(--secondarytwo);
+ul:hover{
+  color: #FFF8F0;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.container{
+  max-width: 1240px;
+  margin: auto;
 }
 
-ul {
-    list-style-type: none;
-    color: #333;
-}
-
-ul:hover {
-    color: #FFF8F0;
-}
-
-.container {
-    max-width: 1240px;
-    margin: auto;
-}
-
-a {
-    text-decoration: none;
+a{
+  text-decoration: none;
 
 }
 
 body {
-    margin: 0;
-    font-family: 'Poppins', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  margin: 0;
+  font-family: 'Poppins', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
+h1{font-size: 3.5rem;line-height: 1.2;}
+h2{font-size: 2.4rem;line-height: 1.2;}
+h5{font-size: 1.1rem;line-height: 1.2;}
+p{font-size: 1.2rem;}
+
+
+.btn{
+  padding: 14px 32px;
+  border: 1px solid var(--primary);
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-h2 {
-    font-size: 2.4rem;
-    line-height: 1.2;
+.btn:hover{
+  box-shadow: rgba(193, 154, 107, 0.6) 0px 0px 15px;
+  transition: 0.5s;
 }
 
-h5 {
-    font-size: 1.1rem;
-    line-height: 1.2;
+input{
+  padding: 12px 32px;
+  border: 1px solid var(--primary);
+  background: transparent;
+  border-radius: 30px;
+  font-size: 1rem;
+  margin-right: 0.8rem;
+  font-family: 'Poppins', sans-serif;
 }
 
-p {
-    font-size: 1.2rem;
-}
-
-.btn:hover {
-    box-shadow: rgba(193, 154, 107, 0.6) 0px 0px 15px;
-    transition: 0.5s;
-}
-
-input {
-    padding: 12px 32px;
-    border: 1px solid var(--primary);
-    background: transparent;
-    border-radius: 30px;
-    font-size: 1rem;
-    margin-right: 0.8rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-.input-style:focus {
-    outline: 1px solid #3B2F2F;
+.input-style:focus{
+  outline: 1px solid #3B2F2F;
 }
 
 @media screen and (max-width: 768px) {
-    h1 {
-        font-size: 2.1rem;
-        line-height: 1.2;
-    }
+  h1{font-size: 2.1rem;line-height: 1.2;}
+  h2{font-size: 1.5rem;line-height: 1.2;}
+  h5{font-size: 1.1rem;line-height: 1.2;}
+  p{font-size: 1rem;}
 
-    h2 {
-        font-size: 1.5rem;
-        line-height: 1.2;
-    }
-
-    h5 {
-        font-size: 1.1rem;
-        line-height: 1.2;
-    }
-
-    p {
-        font-size: 1rem;
-    }
-
-    .btn {
-        width: 100%;
-        margin: 1rem 0;
-    }
-
-    input {
-        width: 100%;
-    }
+  .btn{
+    width: 100%;
+    margin: 1rem 0;
+  }
+  input{
+    width: 100%;
+  }
 }
 
 .footer a {
-    color: black;
-    transition: color 0.3s ease;
+  color: black;
+  transition: color 0.3s ease;
 }
 
 .footer a:hover {
-    color: white;
+  color: white;
 }

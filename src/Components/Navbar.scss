@@ -1,51 +1,90 @@
 .header {
-  background-color: #000;
-  padding: 1rem 2rem;
-  position: relative;
-  border-radius: 12px;
-  margin: 1rem auto;
-  max-width: 1200px;
+  background-color: #FFF8F0; // soft latte
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(111, 78, 55, 0.1); // subtle coffee shadow
 
   .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // src/Components/Navbar.scss
+
+  .header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
+  .icon-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .cart-icon {
+    position: relative;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+
+  @keyframes badgePop {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.4); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes badgePulse {
+    0%   { box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.5); }
+    50%  { box-shadow: 0 0 0 6px rgba(229, 62, 62, 0); }
+    100% { box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.5); }
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #e53e3e;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9);
+    animation: badgePulse 2s ease-out infinite;
+  }
+
+  .cart-badge.pop {
+    animation: badgePop 0.4s ease-out;
+  }
+
   .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #fff;
-    line-height: 1;
+    color: #3B2F2F;
+  }
 
-    .primary {
-      color: #ea2175;
-    }
+  .primary {
+    color: #C19A6B;
   }
 
   .nav-menu {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     list-style: none;
-    margin: 0;
-    padding: 0;
 
-    li {
-      margin: 0;
+    li a {
+      text-decoration: none;
+      color: #3B2F2F;
+      font-weight: 500;
+      transition: color 0.3s ease;
 
-      a {
-        display: block;
-        padding: 0.5rem 0;
-        text-decoration: none;
-        color: #fff;
-        font-weight: 500;
-        text-align: center;
-        transition: color 0.3s ease, transform 0.3s ease;
-
-        &:hover {
-          color: #FF6B6B;
-          transform: translateY(-2px);
-        }
+      &:hover {
+        color: #C19A6B;
       }
     }
   }
@@ -53,121 +92,44 @@
   .nav-menu.active {
     display: block;
     position: absolute;
-    top: 100%;
+    top: 70px;
     left: 0;
     right: 0;
-    background: #000;
+    background: #FFF8F0;
     padding: 1rem 2rem;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    box-shadow: 0 4px 8px rgba(111, 78, 55, 0.15);
   }
 
-  .btn_group {
-    display: flex;
-    align-items: center;
+  .btn_group .btn {
+    background-color: #6F4E37;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
 
-    .btn {
-      background-color: #58ac6f;
-      color: #fff;
-      padding: 0.6rem 1.8rem;
-      margin: 0 1rem;
-      border-radius: 30px;
-      border: none;
-      font-weight: 500;
-      cursor: pointer;
-      transition: box-shadow 0.3s ease, transform 0.2s ease;
-
-      &:hover {
-        box-shadow: rgba(255, 107, 107, 0.6) 0px 0px 15px;
-        transform: scale(1.05);
-      }
+    &:hover {
+      box-shadow: rgba(193, 154, 107, 0.6) 0px 0px 15px;
     }
   }
 
-  .icon-group {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+  .hamburger {
+    display: none;
+    cursor: pointer;
 
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-      padding: 0.4rem;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      svg {
-        color: #fff;
-      }
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
-    }
-
-    .cart-badge {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background-color: #FF6B6B;
-      color: white;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: bold;
-      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
-      animation: badgePulse 2s ease-out infinite;
-
-      &.pop {
-        animation: badgePop 0.4s ease-out;
-      }
-    }
-
-    .hamburger {
-      display: none;
-      color: #fff;
-      cursor: pointer;
-      @media (max-width: 768px) {
-        display: block;
-      }
-    }
-  }
-
-  @keyframes badgePop {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.4);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes badgePulse {
-    0% {
-      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.5);
-    }
-    50% {
-      box-shadow: 0 0 0 6px rgba(255, 107, 107, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.5);
+    @media (max-width: 768px) {
+      display: block;
     }
   }
 
   @media (max-width: 768px) {
     .nav-menu {
       display: none;
+      flex-direction: column;
+      align-items: center;
     }
+
     .btn_group {
       display: none;
     }

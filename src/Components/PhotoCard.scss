@@ -1,0 +1,44 @@
+.photo-card {
+  position: absolute;
+  touch-action: none;
+  cursor: grab;
+  pointer-events: all;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .photo-card__frame {
+    pointer-events: none;
+    background: #fff;
+    padding: 0.75rem;
+    height: 330px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    border-radius: 4px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &.is-dragging .photo-card__frame {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .photo-card__image {
+    pointer-events: none;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  .photo-card__caption {
+    pointer-events: none;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: #333;
+    text-align: center;
+  }
+}

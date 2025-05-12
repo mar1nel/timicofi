@@ -1,43 +1,115 @@
-import React from "react";
+import React from 'react';
+import PhotoCard from './PhotoCard';
 import './Hero.scss';
-import Beans from '../Assets/beans.png'; // can be a nice coffee beans photo
-import { motion } from "framer-motion";
 
-const Hero = () => {
-    return (
-        <div className='hero'>
-            <div className='container'>
-                <div className='left'>
-                    <p className="text-subtle">Your daily dose of energy, taste, and comfort</p>
-                    <h1>
-                        Start your day with Timi<span className="primary">cofi</span>
-                    </h1>
-                    <p>Artisan-crafted non-alcoholic brown beer meets energizing botanicals</p>
+const Hero = () => (
+    <>
+        <section className="hero-section hero-section--split" id="intro">
+            <PhotoCard
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
+                alt="Coffee cup"
+            />
+            <PhotoCard
+                src="https://images.unsplash.com/photo-1522083165194-1b01d865ff17?auto=format&fit=crop&w=800&q=80"
+                alt="Menu spread"
+            />
+            <div className="wrapper">
+                <div className="text-block">
+                    <h2>Best Coffee <span className="highlight">since 2025</span></h2>
+                    <p style={{marginTop: '40px'}}>
+                        Bringing you homemade tasty treats, banging burgers, proper pancakes & so much more!
+                    </p>
+                    <button
+                        style={{maxWidth: '300px', marginTop: '40px'}}
+                        className="btn btn--primary"
+                    >
+                        View our menu
+                    </button>
+                </div>
+                <div
+                    className="image-block"
+                    style={{
+                        backgroundImage: `url(https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80)`,
+                    }}
+                />
+            </div>
+        </section>
 
-                    <div className='input-container'>
-                        <input className='input-style' style={{marginBottom: "20px"}} type='email' placeholder='Join our coffee club' />
-                        <button className='btn'>Get Started</button>
+        <section
+            className="hero-section hero-section--full hero-section--orange"
+            id="whatscooking"
+        >
+            <div className="wrapper">
+                <h2>What’s cookin’ good lookin’?</h2>
+            </div>
+        </section>
+
+        <section className="hero-section hero-section--gallery" id="foodshot">
+            <div className="wrapper">
+                <div
+                    className="image-block"
+                    style={{
+                        backgroundImage: 'url(https://coffee-break.ro/wp-content/uploads/2016/05/coffee-bk1920x1080.jpg)',
+                    }}
+                />
+                <div
+                    className="image-block"
+                    style={{
+                        backgroundImage: 'url(https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2024/02/04180615/Montage-photo-article-PARIS-SECRET-OFFICIEL-1620-x-1080-px-1024x683.jpg)',
+                    }}
+                />
+                <div
+                    className="image-block"
+                    style={{
+                        backgroundImage: 'url(https://frenchmarketcoffee.com/wp-content/uploads/2022/03/WIDE_HD_1920X1080-FMC-Recipe_Vietnamese-Iced-Coffee-40-2.jpg)',
+                    }}
+                />
+            </div>
+        </section>
+
+        <section className="hero-section hero-section--full hero-section--pink" id="realpeople">
+            <div className="wrapper hero-signup">
+                <div className="signup-form">
+                    <div>
+                        <input style={{maxWidth: "400px"}}
+                               type="email"
+                               className="subscribe-form__input"
+                               placeholder="Enter your email"
+                        />
+                        <button type="submit" className="btn btn--secondarytwo subscribe-form__button">
+                            Join our newsletter
+                        </button>
                     </div>
                 </div>
-
-                <div className='right'>
-                    <motion.div
-                        className='img-container'
-                        initial={{ opacity: 0 }}
-                        animate={{ x: 10, y: 10, opacity: 1 }}
-                        transition={{
-                            ease: "linear",
-                            duration: 1,
-                            x: { duration: 1 },
-                            y: { duration: 1 }
-                        }}
-                    >
-                        <img src={Beans} alt='Fresh roasted beans' />
-                    </motion.div>
+                <div className="signup-copy">
+                    <h2>
+                        REAL PEOPLE <span>with real history</span>
+                    </h2>
+                    <p>We’ve been through thick & thin to bring the best coffee to Timisoara.</p>
                 </div>
             </div>
-        </div>
-    );
-};
+        </section>
+
+        <section
+            className="hero-section hero-section--split hero-section--reverse"
+            id="delivery"
+        >
+            <div className="wrapper">
+                <div className="text-block">
+                    <h2>
+                        Funky fresh, straight to your <span className="highlight">FRONT DOOR!</span>
+                    </h2>
+                    <button style={{marginTop: '40px'}} className="btn btn--secondary">Order online</button>
+                </div>
+                <div
+                    className="image-block"
+                    style={{
+                        backgroundImage: `url(https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=80)`,
+                    }}
+                />
+            </div>
+        </section>
+    </>
+);
 
 export default Hero;

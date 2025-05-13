@@ -59,6 +59,10 @@ export default function CheckoutPage() {
                     </div>
                 </>
             )}
+
+            <div className="spike-behind"/>
+            <div className="spike"/>
+            
         </div>
     );
 }

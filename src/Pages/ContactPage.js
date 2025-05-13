@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import {Input, Textarea, Checkbox, Button, Grid} from "@nextui-org/react";
+import {Input, Textarea, Button, Grid} from "@nextui-org/react";
 import "./ContactPage.scss";
 
 export default function ContactPage() {

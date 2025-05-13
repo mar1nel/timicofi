@@ -103,13 +103,11 @@
 
     .contact-links {
       display: flex;
-      flex-wrap: wrap; // allow pills to flow onto multiple rows
+      flex-wrap: wrap;
       gap: 0.75rem;
       justify-content: center;
       margin-top: 1rem;
-      /* drop max-width so it fills its parent fully */
       max-width: none;
-      /* no overflow clipping, let it expand or wrap */
       overflow: visible;
 
       a {

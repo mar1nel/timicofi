@@ -1,0 +1,93 @@
+:root {
+  --primary: #ea6721;
+  --secondary: #63A375;
+  --bg-start: #f8f4f0;
+  --bg-end: #e8e1dd;
+}
+
+.auth-hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 45vh;
+    background: linear-gradient(135deg, #ff6b00, var(--primary));
+    clip-path: polygon(0 20%, 100% 0, 100% 60%, 0 80%);
+    z-index: 0;
+  }
+
+  .auth-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+
+  .auth-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem;
+    color: #333;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.3rem;
+
+    .nextui-input-container {
+      width: 100%;
+    }
+
+    .nextui-input-label {
+      top: 5px !important;
+    }
+  }
+
+  .btn--primary {
+    background-color: var(--primary);
+    color: #fff !important;
+    border: 2px solid #ff6eae;
+  }
+
+  .btn--secondary {
+    background-color: #58ac6f;
+    color: #fff !important;
+    border: 2px solid #38ca60;
+  }
+
+  .toggle-line {
+    text-align: center;
+    margin-top: 1rem;
+
+    button {
+      background: none;
+      border: none;
+      color: var(--primary);
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 500;
+    }
+  }
+
+  .logout-btn {
+    display: block;
+    margin: 1rem auto 0;
+    background-color: #d9534f;
+    color: #fff !important;
+  }
+}

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Input, Button, Card} from "@nextui-org/react";
 import {useNavigate} from "react-router-dom";
 import {useCart} from "../Context/CartContext";
+import "./AuthPage.scss";
 
 export default function AuthPage() {
     const navigate = useNavigate();
@@ -18,21 +19,20 @@ export default function AuthPage() {
         setFormData({email: "", password: "", confirmPassword: ""});
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e) =>
         setFormData((prev) => ({...prev, [e.target.name]: e.target.value}));
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Password match check on signup
+        // SIGNUP password match
         if (!isLogin && formData.password !== formData.confirmPassword) {
             alert("Passwords do not match!");
             return;
         }
 
         if (isLogin) {
-            // LOGIN logic
+            // LOGIN
             try {
                 const response = await fetch("http://localhost:8080/auth/login", {
                     method: "POST",
@@ -42,9 +42,6 @@ export default function AuthPage() {
                         password: formData.password,
                     }),
                 });
-
-                // const data = await response.json();
-                // const { userId, message } = data;
 
                 const {userId, message} = await response.json();
                 if (response.ok) {
@@ -61,7 +58,7 @@ export default function AuthPage() {
                 alert("Server error. Try again later.");
             }
         } else {
-            // SIGN UP logic
+            // SIGN UP
             try {
                 const response = await fetch("http://localhost:8080/auth/register", {
                     method: "POST",
@@ -88,22 +85,24 @@ export default function AuthPage() {
     };
 
     const handleLogout = () => {
-        // clearCart();
+        clearCart();
         localStorage.removeItem("userId");
         localStorage.removeItem("loggedIn");
         navigate("/auth");
     };
 
     return (
-        <div
-            className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-zinc-100 to-slate-200 px-4">
-            <Card className="w-full max-w-md shadow-xl rounded-2xl p-6">
-                <h2 className="text-xl font-semibold text-center mb-6">
-                    {isLogin ? "Login to Coffee Project" : "Create an Account"}
+        <div className="auth-hero">
+            <Card className="auth-card">
+                <h2 className="auth-title">
+                    {isLogin ? "Welcome Back" : "Join TimiCofi Family"}
                 </h2>
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+
+                <form onSubmit={handleSubmit} className="auth-form">
                     <Input
-                        label="Email"
+                        clearable
+                        underlined
+                        labelPlaceholder="Email"
                         name="email"
                         type="email"
                         value={formData.email}
@@ -111,7 +110,9 @@ export default function AuthPage() {
                         required
                     />
                     <Input
-                        label="Password"
+                        clearable
+                        underlined
+                        labelPlaceholder="Password"
                         name="password"
                         type="password"
                         value={formData.password}
@@ -120,7 +121,9 @@ export default function AuthPage() {
                     />
                     {!isLogin && (
                         <Input
-                            label="Confirm Password"
+                            clearable
+                            underlined
+                            labelPlaceholder="Confirm Password"
                             name="confirmPassword"
                             type="password"
                             value={formData.confirmPassword}
@@ -128,19 +131,27 @@ export default function AuthPage() {
                             required
                         />
                     )}
-                    <Button type="submit" color="primary" className="mt-2">
+
+                    <Button
+                        type="submit"
+                        className={`btn ${isLogin ? "btn--primary" : "btn--secondary"}`}
+                    >
                         {isLogin ? "Login" : "Sign Up"}
                     </Button>
                 </form>
-                <p className="text-sm text-center mt-4">
-                    {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-                    <button type="button" className="text-blue-600 underline" onClick={toggleForm}>
+
+                <div className="toggle-line">
+                    {isLogin
+                        ? "Don't have an account? "
+                        : "Already have an account? "}
+                    <button onClick={toggleForm}>
                         {isLogin ? "Sign Up" : "Login"}
                     </button>
-                </p>
+                </div>
             </Card>
+
             {localStorage.getItem("loggedIn") === "true" && (
-                <Button color="danger" onClick={handleLogout} className="mt-4">
+                <Button onClick={handleLogout} className="logout-btn">
                     Logout
                 </Button>
             )}

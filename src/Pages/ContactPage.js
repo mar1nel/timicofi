@@ -1,156 +1,111 @@
 import React from "react";
-// import { Text } from "@nextui-org/react";
 import Navbar from "../Components/Navbar";
-import "./ContactPage.scss";
 import Footer from "../Components/Footer";
+import {Input, Textarea, Checkbox, Button, Grid} from "@nextui-org/react";
+import "./ContactPage.scss";
 
-import { Input, Spacer } from '@nextui-org/react';
-import { Checkbox } from "@nextui-org/react";
-import { Textarea, Grid } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
+export default function ContactPage() {
+    return (
+        <>
+            <Navbar/>
 
-
-
-const ContactPage = () => {
-
-    return(
-            <>
-                <Navbar/>
-
-                <div className="contact-bg">
-                    <div style={{
-                        textAlign: "center",
-                    }}>
-                        <h1 style={{
-                            padding: "20px",
-                            display: "inline-block",
-                            verticalAlign: "middle",
-                            margin: "0",
-                        }}>Contact Our Team</h1>
-
-                        <img src="https://em-content.zobj.net/source/apple/271/brown-heart_1f90e.png" alt="/"
-                             style={{ width: "60px", height: "60px", marginTop: "20px", position: "relative", left: "20px", top: "20px" }} />
-                    </div>
-
-
-
-
-                    <p style={{
-                    textAlign: "center",}}>
-                    We value your feedback, inquiries, and suggestions, and we're excited to hear from you.<br/>
-                    Our dedicated team is here to assist you with any questions or concerns you may have.
-                </p>
+            <section className="contact-bg">
+                <div className="contact-intro">
+                    <h1>Contact Our Team</h1>
+                    <img
+                        src="https://em-content.zobj.net/source/apple/271/brown-heart_1f90e.png"
+                        alt="heart"
+                        className="heart-icon"
+                    />
                 </div>
+                <p>
+                    We value your feedback, inquiries, and suggestions, and we’re excited
+                    to hear from you. Our dedicated team is here to assist with any
+                    questions or concerns you may have.
+                </p>
+            </section>
 
-                <div className="contact-hero">
-
-                    <div className="contact-form">
-
-                    <div className="form-input">
-
-                        <Grid.Container gap={2.5} css={{
-                            display: "grid",
-                            maxWidth: "400px",
-                            margin: "0 auto",
-                        }}>
-                            <h2 style={{
-                                textAlign: "center",
-                                marginTop: "10px",
-                                marginRight: "40px",
-                                marginBottom: "20px",
-                                color: "Black"
-                            }}>Contact Form</h2>
-                            <Input
-                                size="md"
-                                placeholder="Name"
-                                css={{
-                                    borderRadius: "4px",
-                                    maxWidth: "400px",
-                                }}
+            <section className="contact-hero">
+                <div className="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <Grid.Container gap={2} justify="center">
+                        <Grid xs={12}>
+                            <Input clearable fullWidth underlined placeholder="Name"/>
+                        </Grid>
+                        <Grid xs={12}>
+                            <Input clearable fullWidth underlined placeholder="Email" type="email"/>
+                        </Grid>
+                        <Grid xs={12}>
+                            <Input clearable fullWidth underlined placeholder="Phone" type="tel"/>
+                        </Grid>
+                        <Grid xs={12}>
+                            <Textarea
+                                underlined fullWidth
+                                placeholder="Your message…"
+                                helperText="Please don’t include links"
                             />
-                            <Grid>
-                                <Grid.Container gap={3} alignItems="center">
-                                    <Grid>
-                                        <Checkbox size="md" style={{
-                                            left: "-20px",
-                                            top: "5px"
-                                        }} ></Checkbox>
-                                        <Input
-                                            size="md"
-                                            placeholder="Company"
-                                            css={{
-                                                borderRadius: "4px",
-                                            }}
-                                        />
-                                    </Grid>
-                                </Grid.Container>
-                            </Grid>
-                            <Input
-                                size="md"
-                                placeholder="Phone"
-                                css={{
-                                    borderRadius: "4px",
-                                    maxWidth: "400px",
-                                }}
-                            />
-                            <Grid style={{
-                                border:"red"
-                            }}>
-                                <Textarea
-                                    size="md"
-                                    label=""
-                                    helperText="Please don't provide links"
-                                    placeholder="_"
-                                    css={{
-                                        maxWidth: "400px",
-                                        width: "400px",
-                                        // height: "50px",
-                                        top: "20px",
-                                        right: "20px",
-                                        maxHeight: "800",
-                                        // resize: "vertical"
-                                    }}
-                                />
-
-                            </Grid>
-                        </Grid.Container>
-
-                        <div style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            marginTop: "40px",
-                        }}>
-                            <Button color="primary" auto style={{ marginRight: "30px" }}>
+                        </Grid>
+                        <Grid xs={12} className="form-buttons">
+                            <Button auto className="btn-send">
                                 Send
                             </Button>
-                            <Button color="error" auto style={{ marginLeft: "10px" }}>
+                            <Button auto className="btn-cancel">
                                 Cancel
                             </Button>
-                        </div>
-                    </div>
+                        </Grid>
+                    </Grid.Container>
                 </div>
 
-                    <div className="contact-us">
-                        <div className="contact-us-title">
-                            <h2>Timi<span style={{color: "#6F4E37"}}>cofi</span> Socials</h2>
-                        </div>
-                        <div className="contact-links">
-                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-59-512.png'/>Telegram</a>
-                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-03-512.png'/>Instagram</a>
-                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-05-512.png'/>Twitter</a>
-                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-04-512.png'/>Facebook</a>
-                            <a href="/"> <img className="socials" src='https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-44-512.png'/>LinkedIn</a>
-
-                        </div>
+                <div className="contact-us">
+                    <h2>
+                        Timi<span className="highlight">cofi</span> Socials
+                    </h2>
+                    <div className="contact-links">
+                        <a href="/">
+                            <img
+                                className="socials"
+                                src="https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-59-512.png"
+                                alt="Telegram"
+                            />
+                            Telegram
+                        </a>
+                        <a href="/">
+                            <img
+                                className="socials"
+                                src="https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-03-512.png"
+                                alt="Instagram"
+                            />
+                            Instagram
+                        </a>
+                        <a href="/">
+                            <img
+                                className="socials"
+                                src="https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-05-512.png"
+                                alt="Twitter"
+                            />
+                            Twitter
+                        </a>
+                        <a href="/">
+                            <img
+                                className="socials"
+                                src="https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-04-512.png"
+                                alt="Facebook"
+                            />
+                            Facebook
+                        </a>
+                        <a href="/">
+                            <img
+                                className="socials"
+                                src="https://cdn2.iconfinder.com/data/icons/social-media-and-payment/64/-44-512.png"
+                                alt="LinkedIn"
+                            />
+                            LinkedIn
+                        </a>
                     </div>
-
                 </div>
+            </section>
 
-
-                <Footer/>
-            </>
-    )
+            <Footer/>
+        </>
+    );
 }
-
-export default ContactPage;

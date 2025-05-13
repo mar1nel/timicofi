@@ -1,101 +1,146 @@
-.contact-bg {
-  background-color: #FFF8F0;
-  padding: 3rem 1rem;
+:root {
+  --primary: #ea6721;
+  --secondary: #63a375;
+  --text-dark: #3b2f2f;
+  --text-med: #7a6a4f;
+  --bg-light: #fff8f0;
+  --bg-pale: #ff9292;
+}
 
-  h1 {
-    color: #3B2F2F;
+.contact-bg {
+  background: var(--bg-light);
+  padding: 3rem 1rem;
+  text-align: center;
+
+  .contact-intro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      margin: 0;
+      color: var(--text-dark);
+      font-size: 2.4rem;
+    }
+
+    .heart-icon {
+      width: 60px;
+      margin-left: 1rem;
+    }
   }
 
   p {
-    color: #7A6A4F;
+    margin-top: 1rem;
+    color: var(--text-med);
     font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 .contact-hero {
-  background-color: #F5E6DA;
+  background: var(--bg-pale);
   padding: 2rem;
 
   .contact-form {
-    margin-bottom: 3rem;
-
-    h2 {
-      color: #3B2F2F;
-    }
-
-    input,
-    textarea {
-      background-color: #fffaf6 !important;
-      border-color: #C19A6B !important;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: #A98D7A;
-    }
-
-    .css-dev-only-do-not-override-1qfezbu {
-      background-color: #FFF8F0 !important;
-    }
-
-    button {
-      font-weight: 600;
-    }
-
-    button[aria-label="Send"] {
-      background-color: #6F4E37;
-      color: white;
-
-      &:hover {
-        box-shadow: 0 0 12px rgba(193, 154, 107, 0.6);
-      }
-    }
-
-    button[aria-label="Cancel"] {
-      background-color: #C19A6B;
-      color: white;
-    }
-  }
-
-  .contact-us-title {
+    max-width: 500px;
+    margin: 0 auto 3rem auto;
     text-align: center;
-    margin-bottom: 1rem;
 
     h2 {
-      color: #3B2F2F;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .nextui-input-underlined {
+      background: #fffaf6 !important;
+      border-color: #c19a6b !important;
+
+      &::placeholder {
+        color: #a98d7a;
+      }
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+
+      .btn-send {
+        background: var(--primary);
+        color: #fff;
+        font-weight: 600;
+
+        &:hover {
+          box-shadow: 0 0 12px rgba(234, 103, 33, 0.6);
+        }
+      }
+
+      .btn-cancel {
+        background: var(--secondary);
+        color: #fff;
+        font-weight: 600;
+      }
     }
   }
 
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  .contact-us {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
 
-    a {
+    h2 {
+      color: var(--text-dark);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      color: var(--primary);
+    }
+
+    .contact-links {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #3B2F2F;
-      font-weight: 500;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
+      flex-wrap: wrap; // allow pills to flow onto multiple rows
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1rem;
+      /* drop max-width so it fills its parent fully */
+      max-width: none;
+      /* no overflow clipping, let it expand or wrap */
+      overflow: visible;
 
-      .socials {
-        width: 24px;
-        height: 24px;
-        filter: brightness(0) saturate(100%) invert(19%) sepia(14%) saturate(1194%) hue-rotate(355deg) brightness(95%) contrast(95%);
-        transition: filter 0.3s ease;
-      }
+      a {
+        flex-shrink: 0; // keep the pill from shrinking too small
+        padding: 0.5rem 1rem;
+        background: rgba(234, 103, 33, 0.1);
+        border-radius: 999px;
+        color: #3B2F2F;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.3s ease, transform 0.2s ease;
 
-      &:hover {
-        color: white;
 
         .socials {
-          filter: brightness(0) saturate(100%) invert(95%) sepia(9%) saturate(216%) hue-rotate(5deg) brightness(120%) contrast(100%);
+          width: 24px;
+          height: 24px;
+          filter: brightness(0) saturate(100%) invert(19%) sepia(14%) saturate(1194%) hue-rotate(355deg) brightness(95%) contrast(95%);
+          transition: filter 0.3s ease;
+        }
+
+        &:hover {
+          background: var(--primary);
+          color: #fff;
+          transform: translateY(-2px);
+
+          .socials {
+            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+          }
         }
       }
     }
+
   }
 }

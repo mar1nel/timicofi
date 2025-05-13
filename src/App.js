@@ -84,7 +84,7 @@ function App() {
                     initial={initials[i]}
                 />
             ))}
-
+ 
             <Navbar/>
             <Hero/>
             <Footer/>

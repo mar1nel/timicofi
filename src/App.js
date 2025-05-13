@@ -53,8 +53,7 @@ function App() {
                 x = Math.random() * (SPAWN_WIDTH - CARD_W);
                 y = scrollY + Math.random() * (SPAWN_HEIGHT - CARD_H);
                 attempts++;
-                // safety break after 100 tries
-                if (attempts > 100) break;
+                if (attempts > 5) break;
             } while (isTooClose(x, y));
             positions.push({x, y});
         });
@@ -63,7 +62,6 @@ function App() {
     }, []);
 
 
-    // until we have positions, render content only
     if (!initials) {
         return (
             <div ref={pageRef} style={{position: 'relative'}}>

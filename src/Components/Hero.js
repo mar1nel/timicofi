@@ -56,7 +56,8 @@ export default function Hero() {
                     style={{
                         top: img.top,
                         left: img.left,
-                        width: img.width
+                        width: img.width,
+                        transform: img.transform,
                     }}
                 />
             ))}

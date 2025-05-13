@@ -1,0 +1,53 @@
+:root {
+  --primary: #ea6721;
+}
+
+.wrapper-shop-upper,
+.wrapper-shop-down,
+.wrapper-shop-unavailable {
+  position: relative;
+  padding: 4rem 6rem;
+}
+
+.wrapper-shop-upper {
+  position: relative;
+  background: #ebc69a;
+}
+
+.shop-title {
+  margin-bottom: 1rem;
+}
+
+.shop-title-down {
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+
+.shop-title-unavail {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.wrapper-shop-down {
+  background: #fd5da1;
+}
+
+.wrapper-shop-upper::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: -0%;
+  top: 100%;
+  z-index: 10;
+  display: block;
+  height: 85px;
+  background-size: 85px 100%;
+  background-image: linear-gradient(135deg, #eac599 25%, transparent 25%), linear-gradient(225deg, #eac599 25%, transparent 25%);
+  background-position: 0 0;
+}
+
+.decorative-shop {
+  position: absolute;
+  pointer-events: none;
+}

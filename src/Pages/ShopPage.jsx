@@ -1,8 +1,19 @@
 import React, {useEffect, useState} from "react";
 import Navbar from "../Components/Navbar";
 import CoffeeCard from "../Components/CoffeeCard";
+import './ShopPage.scss'
 
-// Map the first 10 IDs to a distinct coffee image
+const decorativeImages = [
+    {
+        src: 'https://images.seeklogo.com/logo-png/45/2/globe-logo-png_seeklogo-459589.png',
+        alt: 'Coffee cup',
+        width: 340,
+        top: -50,
+        left: 1550,
+        opacity: "80%",
+    }
+];
+
 const imageMap = {
     1: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
     2: "https://i2.wp.com/www.twosisterscrafting.com/wp-content/uploads/2022/04/coffee-chocolate-chip-cookies-1200-main.jpg",
@@ -16,19 +27,17 @@ const imageMap = {
     10: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlFCIBPb5usET8pS0C2YimlIRODgrNBkZjWg&s",
 };
 
-// A generic fallback image
 const defaultImage = "https://images.unsplash.com/photo-1510626176961-4b95f52eff21?auto=format&fit=crop&w=800&q=80";
 
 const ShopPage = () => {
     const [products, setProducts] = useState([]);
 
-    // Fetch the catalog from the backend
     useEffect(() => {
         (async () => {
             try {
                 const res = await fetch("http://localhost:8080/reports/coffees");
                 if (!res.ok) throw new Error(await res.text());
-                const data = await res.json(); // [{ id, name, description, price, ... }, …]
+                const data = await res.json();
                 setProducts(data);
             } catch (err) {
                 console.error("Failed to load coffees:", err);
@@ -40,49 +49,77 @@ const ShopPage = () => {
         <>
             <Navbar/>
 
-            {/* Featured Blends */}
-            <section className="py-16 px-4 bg-white">
-                <h2 className="text-3xl font-bold text-left text-brown-800 mb-6">
-                    Featured Blends
-                </h2>
-                <div className="flex flex-row gap-6 flex-wrap">
-                    {products.map((c) => (
-                        <CoffeeCard
-                            key={c.id}
-                            coffeeId={c.id}
-                            name={c.name}
-                            description={c.description}
-                            price={c.price}
-                            // pick imageMap[c.id] if it exists, otherwise defaultImage
-                            image={imageMap[c.id] || defaultImage}
+            <section className="shop-section">
+                <div className="wrapper-shop-upper">
+                    {decorativeImages.map((img, idx) => (
+                        <img
+                            key={idx}
+                            src={img.src}
+                            alt={img.alt}
+                            className={`decorative-shop ${img.mirrored ? 'mirrored' : ''}`}
+                            style={{
+                                opacity: img.opacity,
+                                top: img.top,
+                                left: img.left,
+                                width: img.width
+                            }}
                         />
                     ))}
-                </div>
-            </section>
-
-            {/* Discount Picks */}
-            <section className="py-16 px-4 bg-yellow-50">
-                <h2 className="text-3xl font-bold text-left text-brown-800 mb-6">
-                    Discount Picks
-                </h2>
-                <div className="flex flex-row gap-6 flex-wrap">
-                    {products.map((c) => {
-                        // shift id by 5 so you start at image 6–10
-                        const shiftedId = ((c.id - 1 + 5) % 10) + 1;
-                        return (
+                    <h2 className="shop-title">Featured Blends</h2>
+                    <div className="cards-grid">
+                        {products.map((c) => (
                             <CoffeeCard
                                 key={c.id}
                                 coffeeId={c.id}
                                 name={c.name}
                                 description={c.description}
                                 price={c.price}
-                                image={imageMap[shiftedId] || defaultImage}
+                                image={imageMap[c.id] || defaultImage}
                             />
-                        );
-                    })}
+                        ))}
+                    </div>
                 </div>
             </section>
 
+            <section className="shop-section">
+                <div className="wrapper-shop-down">
+                    <h2 className="shop-title-down">Discount Picks</h2>
+                    <div className="cards-grid">
+                        {products.map((c) => {
+                            const sid = ((c.id - 1 + 5) % 10) + 1;
+                            return (
+                                <CoffeeCard
+                                    key={c.id}
+                                    coffeeId={c.id}
+                                    name={c.name}
+                                    description={c.description}
+                                    price={c.price}
+                                    image={imageMap[sid] || defaultImage}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            <section className="shop-section">
+                <div className="wrapper-shop-unavailable">
+                    <h2 className="shop-title-unavail">No More Available</h2>
+                    <div className="cards-grid unavailable">
+                        {products.slice(0, 3).map((c) => (
+                            <CoffeeCard
+                                key={c.id}
+                                coffeeId={c.id}
+                                name={c.name}
+                                description={c.description}
+                                price={c.price}
+                                image={imageMap[c.id] || defaultImage}
+                                disabled={true}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
         </>
     );
 };

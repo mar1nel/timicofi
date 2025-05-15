@@ -6,10 +6,11 @@ import {motion} from "framer-motion";
 import "./Navbar.scss";
 
 export default function Navbar() {
-    const [click, setClick] = useState(false);
     const {cart} = useCart();
     const navigate = useNavigate();
+    const [click, setClick] = useState(false);
     const [badgeClass, setBadgeClass] = useState("");
+    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
 
     const totalItems = cart?.items?.reduce((sum, i) => sum + i.qty, 0) || 0;
     useEffect(() => {
@@ -34,8 +35,8 @@ export default function Navbar() {
 
                 <ul className={click ? "nav-menu active" : "nav-menu"}>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/table">Tables</Link></li>
-                    <li><Link to="/shop-page">Shop</Link></li>
+                    {/*<li><Link to="/table">Tables</Link></li>*/}
+                    <li><Link to="/shop-page">Our Products</Link></li>
                     <li><Link to="/contact-page">Contact</Link></li>
                 </ul>
 
@@ -46,7 +47,8 @@ export default function Navbar() {
                         whileTap={{scale: 0.95}}
                         onClick={handleAccount}
                     >
-                        Account
+                        {/*Account*/}
+                        Buy Coffee
                     </motion.button>
                 </div>
 
@@ -57,6 +59,25 @@ export default function Navbar() {
                             <span className={`cart-badge ${badgeClass}`}>{totalItems}</span>
                         )}
                     </div>
+                    {isLoggedIn ? (
+                        <Link
+                            to="/"
+                            className="exit-btn"
+                            onClick={() => {
+                                localStorage.clear();
+                                navigate("/");
+                            }}
+                        >
+                            EXIT
+                        </Link>
+                    ) : (
+                        <Link
+                            to="/auth"
+                            className="exit-btn"
+                        >
+                            LOGIN
+                        </Link>
+                    )}
                     <div className="hamburger" onClick={() => setClick(!click)}>
                         {click ? <FaTimes size={18}/> : <FaBars size={20}/>}
                     </div>

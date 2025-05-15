@@ -1,11 +1,3 @@
-//:root {
-//  --primary: #ea6721;
-//  --secondary: #63A375;
-//  --bg-light: #fffbf7;
-//  --text-dark: #3b2f2f;
-//  --muted: #7a6a4f;
-//}
-
 .checkout {
   max-width: 600px;
   margin: 2rem auto;
@@ -28,14 +20,14 @@
   }
 
   .checkout-list {
-    border-top: 1px solid #e0dede;
+    border-top: 1.5px solid #e96721;
     border-bottom: 1px solid #e0dede;
     margin-bottom: 1.5rem;
 
     .checkout-item {
       display: flex;
       justify-content: space-between;
-      padding: 0.75rem 0;
+      padding: 1rem 0;
       font-size: 1rem;
 
       &:not(:last-child) {
@@ -58,7 +50,7 @@
   .checkout-summary {
     display: flex;
     justify-content: space-between;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
     color: var(--primary);
@@ -66,7 +58,7 @@
 
   .checkout-actions {
     display: flex;
-    gap: 1rem;
+    gap: 1.4rem;
     flex-wrap: wrap;
     justify-content: center;
 
@@ -86,7 +78,7 @@
         color: #fff;
 
         &:hover {
-          //background: darken(var(--primary), 5%);
+          background: #e92174;
           transform: translateY(-1px);
         }
       }
@@ -96,7 +88,7 @@
         color: #fff;
 
         &:hover {
-          //background: darken(var(--secondary), 5%);
+          background: #dd002d;
           transform: translateY(-1px);
         }
       }
@@ -139,4 +131,69 @@
   height: 30%;
   background: #ea2175;
   z-index: 0;
+}
+
+.item-desc {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--primary);
+    background: #fff;
+    color: var(--primary);
+    font-size: 1.2rem;
+    line-height: 1;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+  }
+
+  .qty {
+    min-width: 16px;
+    text-align: center;
+    font-weight: 500;
+  }
+}
+
+.space-name {
+  margin-left: 1.25rem;
+}
+
+.item-total {
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.image-cart {
+  position: absolute;
+  top: 533.3px;
+  left: 650px;
+  width: 120px;
+  height: 120px;
+  transform: translateY(0) rotate(-160deg);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+  opacity 0.5s ease-in-out;
+}
+
+.checkout-actions:hover ~ .image-cart {
+  transform: translateY(87px) rotate(-170deg);
+}
+
+.hide-space {
+  position: absolute;
+  top: 544px;
+  left: 0;
+  width: 100%;
+  height: 98px;
+  background-color: #ebc69a;
+  z-index: 2;
+  pointer-events: none;
 }

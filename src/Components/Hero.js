@@ -1,5 +1,6 @@
 import React from 'react';
 import './Hero.scss';
+import {useNavigate} from "react-router-dom";
 
 const decorativeImages = [
     {
@@ -23,6 +24,8 @@ const decorativeImages = [
 ];
 
 export default function Hero() {
+    const navigate = useNavigate();
+
     return (
         <div className="hero-container">
             <section className="hero-section hero-section--split" id="intro">
@@ -34,7 +37,8 @@ export default function Hero() {
                         <p className="mt-40">
                             Bringing you homemade tasty treats, banging burgers, proper pancakes & so much more!
                         </p>
-                        <button className="btn btn--primary mt-40" style={{maxWidth: '300px'}}>
+                        <button onClick={() => navigate("/shop-page")} className="btn btn--primary mt-40"
+                                style={{maxWidth: '300px'}}>
                             View our menu
                         </button>
                     </div>
@@ -112,7 +116,9 @@ export default function Hero() {
                         <h2>
                             Funky fresh, straight to your <span className="highlight">FRONT DOOR!</span>
                         </h2>
-                        <button className="btn btn--secondary mt-40">Order online</button>
+                        <button onClick={() => navigate("/shop-page")} className="btn btn--secondary mt-40">Order
+                            online
+                        </button>
                     </div>
                     <div
                         className="image-block"

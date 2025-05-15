@@ -77,22 +77,23 @@ export default function CheckoutPage() {
                         <span>{total.toFixed(2)} lei</span>
                     </div>
 
-                    <div className="checkout-actions" onMouseEnter={() => setProceedHover(true)}
-                         onMouseLeave={() => setProceedHover(false)}>
-                        <button className="proceed" onClick={handleProceed}>
+                    <div className="checkout-actions">
+                        <button className="proceed" onMouseEnter={() => setProceedHover(true)}
+                                onMouseLeave={() => setProceedHover(false)} onClick={handleProceed}>
                             Proceed to Payment
                         </button>
+                        <img
+                            className={`image-cart${proceedHover ? " shift" : ""}`}
+                            src="https://png.pngtree.com/png-clipart/20230510/original/pngtree-cute-coffee-cup-png-image_9156461.png"
+                            alt="Floating coffee"
+                        />
                         <button className="clear" onClick={clearCart}>
                             Clear Cart
                         </button>
                     </div>
                 </>
             )}
-            <img
-                className={`image-cart${proceedHover ? " shift" : ""}`}
-                src="https://png.pngtree.com/png-clipart/20230510/original/pngtree-cute-coffee-cup-png-image_9156461.png"
-                alt="Floating coffee"
-            />
+
             <div className="hide-space"/>
 
             <div className="spike"/>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useCart} from "../Context/CartContext";
 import {loadStripe} from "@stripe/stripe-js";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import "./CheckoutPage.scss";
 
 const stripePromise = loadStripe(
@@ -11,6 +11,7 @@ const stripePromise = loadStripe(
 export default function CheckoutPage() {
     const {cart, addToCart, clearCart} = useCart();
     const total = cart.items.reduce((sum, i) => sum + i.unitPrice * i.qty, 0);
+    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
@@ -55,9 +56,9 @@ export default function CheckoutPage() {
             <div className="checkout">
                 <h1>Payment Cancelled</h1>
                 <p>Looks like you backed out. No worries—feel free to try again.</p>
-                <div className="return-link">
-                    <Link to="/">← Back to Home</Link>
-                </div>
+                {/*<div className="return-link">*/}
+                {/*    <Link to="/">← Back to Home</Link>*/}
+                {/*</div>*/}
             </div>
         );
     }
@@ -67,12 +68,15 @@ export default function CheckoutPage() {
             {showSuccess && (
                 <div className="success-banner">
                     Thank you for your purchase!
-                    <div className="return-link">
-                        <Link to="/">← Back to Home</Link>
-                    </div>
+                    {/*<div className="return-link">*/}
+                    {/*    <Link to="/">← Back to Home</Link>*/}
+                    {/*</div>*/}
                 </div>
             )}
 
+            <Link className="return-link" to="/shop-page">
+                ← Go back
+            </Link>
             <h1>Your Cart</h1>
             {cart.items.length === 0 ? (
                 <p className="text-center">

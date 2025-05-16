@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useCart} from "../Context/CartContext";
 import {loadStripe} from "@stripe/stripe-js";
+import {Link, useLocation} from "react-router-dom";
 import "./CheckoutPage.scss";
 
 const stripePromise = loadStripe(
@@ -10,9 +11,25 @@ const stripePromise = loadStripe(
 export default function CheckoutPage() {
     const {cart, addToCart, clearCart} = useCart();
     const total = cart.items.reduce((sum, i) => sum + i.unitPrice * i.qty, 0);
-    const [proceedHover, setProceedHover] = useState(false);
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+
+    const {search} = useLocation();
+    const params = new URLSearchParams(search);
+    const isSuccess = params.get("success") === "true";
+    const isCanceled = params.get("canceled") === "true";
+
+    useEffect(() => {
+        if (isSuccess) {
+            clearCart();
+            setShowSuccess(true);
+            window.history.replaceState({}, document.title, "/checkout");
+        }
+    }, [isSuccess, clearCart]);
 
     const handleProceed = async () => {
+        setIsLoading(true);
         try {
             const resp = await fetch(
                 "http://localhost:8080/payments/create-session",
@@ -22,39 +39,58 @@ export default function CheckoutPage() {
                     body: JSON.stringify({amount: total}),
                 }
             );
+            if (!resp.ok) throw new Error(await resp.text());
             const {id: sessionId} = await resp.json();
             const stripe = await stripePromise;
             await stripe.redirectToCheckout({sessionId});
         } catch (err) {
-            console.error("Stripe checkout error:", err);
-            alert("Payment failed to start.");
+            console.error("Stripe error:", err);
+            alert("Could not start payment. Please try again.");
+            setIsLoading(false);
         }
     };
 
+    if (isCanceled) {
+        return (
+            <div className="checkout">
+                <h1>Payment Cancelled</h1>
+                <p>Looks like you backed out. No worries—feel free to try again.</p>
+                <div className="return-link">
+                    <Link to="/">← Back to Home</Link>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="checkout">
-
-            <div className="spike-behind"/>
+            {showSuccess && (
+                <div className="success-banner">
+                    Thank you for your purchase!
+                    <div className="return-link">
+                        <Link to="/">← Back to Home</Link>
+                    </div>
+                </div>
+            )}
 
             <h1>Your Cart</h1>
-
             {cart.items.length === 0 ? (
-                <p className="text-center">Your cart is empty.</p>
+                <p className="text-center">
+                    {showSuccess ? "Your cart is now empty." : "Your cart is empty."}
+                </p>
             ) : (
                 <>
                     <div className="checkout-list">
-                        {cart.items.filter(item => item.qty > 0).map((item) => (
+                        {cart.items.map((item) => (
                             <div key={item.coffeeId} className="checkout-item">
-                                <span className="item-desc">
+                <span className="item-desc">
                   <button
                       className="qty-btn"
-                      onClick={() => {
-                          if (item.qty > 1) {
-                              addToCart(item.coffeeId, -1);
-                          } else {
-                              addToCart(item.coffeeId, -item.qty);
-                          }
-                      }}
+                      onClick={() =>
+                          item.qty > 1
+                              ? addToCart(item.coffeeId, -1)
+                              : addToCart(item.coffeeId, -item.qty)
+                      }
                   >
                     −
                   </button>
@@ -65,7 +101,7 @@ export default function CheckoutPage() {
                   >
                     +
                   </button>
-                                  <span className="space-name"> x </span> {item.name}
+                  <span className="space-name"> x </span> {item.name}
                 </span>
                                 <span className="item-total">{item.lineTotal} lei</span>
                             </div>
@@ -78,25 +114,19 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="checkout-actions">
-                        <button className="proceed" onMouseEnter={() => setProceedHover(true)}
-                                onMouseLeave={() => setProceedHover(false)} onClick={handleProceed}>
-                            Proceed to Payment
+                        <button
+                            className="proceed"
+                            onClick={handleProceed}
+                            disabled={isLoading}
+                        >
+                            {isLoading ? "Loading…" : "Proceed to Payment"}
                         </button>
-                        <img
-                            className={`image-cart${proceedHover ? " shift" : ""}`}
-                            src="https://png.pngtree.com/png-clipart/20230510/original/pngtree-cute-coffee-cup-png-image_9156461.png"
-                            alt="Floating coffee"
-                        />
-                        <button className="clear" onClick={clearCart}>
+                        <button className="clear" onClick={clearCart} disabled={isLoading}>
                             Clear Cart
                         </button>
                     </div>
                 </>
             )}
-
-            <div className="hide-space"/>
-
-            <div className="spike"/>
         </div>
     );
 }

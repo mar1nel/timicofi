@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useCart} from "../Context/CartContext";
 import {loadStripe} from "@stripe/stripe-js";
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import "./CheckoutPage.scss";
 
 const stripePromise = loadStripe(
@@ -11,7 +11,6 @@ const stripePromise = loadStripe(
 export default function CheckoutPage() {
     const {cart, addToCart, clearCart} = useCart();
     const total = cart.items.reduce((sum, i) => sum + i.unitPrice * i.qty, 0);
-    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);

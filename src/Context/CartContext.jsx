@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useState} from "react";
+import React, {createContext, useContext, useEffect, useRef, useState} from "react";
 
 const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
@@ -6,13 +6,16 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({children}) => {
     const userId = localStorage.getItem("userId");
     const [cart, setCart] = useState({id: null, items: []});
+    const didFetch = useRef(false);
 
     useEffect(() => {
-        console.log("[CartContext] currentUserId:", userId);
+        if (didFetch.current) return;
+        didFetch.current = true;
+
+        console.log("[CartContext] fetching cart for:", userId);
         if (userId) {
             fetchCart();
         } else {
-            console.log("[CartContext] no userId, resetting cart");
             setCart({id: null, items: []});
         }
     }, [userId]);

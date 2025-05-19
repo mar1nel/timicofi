@@ -15,23 +15,11 @@
 }
 
 .logo-footer {
-    font-family: "Coffee Town", sans-serif;
-    font-size: 1.8rem;
-    font-weight: normal;
-    color: #000000;
-    line-height: 1;
-    letter-spacing: 0.03em; /* ← adds a little extra space between letters */
     grid-column: 1 / 2;
     padding: 0;
     margin: 0;
     display: flex;
     align-items: center;
-
-    .primary {
-        color: #ea2175;
-    }
-
-
 }
 
 .logo-footer h1 {

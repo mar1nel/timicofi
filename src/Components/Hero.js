@@ -31,8 +31,8 @@ export default function Hero() {
             <section className="hero-section hero-section--split" id="intro">
                 <div className="wrapper">
                     <div className="text-block">
-                        <h2>
-                            Best Coffee <span className="highlight">since 2025</span>
+                        <h2 className="highlight">
+                            Best Coffee <span>since 2025</span>
                         </h2>
                         <p className="mt-40">
                             Bringing you homemade tasty treats, banging burgers, proper pancakes & so much more!

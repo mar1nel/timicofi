@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="header">
             <div className="container">
                 <h2 className="logo">
-                    Timi<span className="primary">cofi</span>
+                    L'Olis<span className="primary">vibes</span>
                 </h2>
 
                 <ul className={click ? "nav-menu active" : "nav-menu"}>

@@ -9,7 +9,7 @@ const stripePromise = loadStripe(
 );
 
 export default function CheckoutPage() {
-    const {cart, addToCart, clearCart} = useCart();
+    const {cart, addToCart, clearCart, decrementStock} = useCart();
     const total = cart.items.reduce((sum, i) => sum + i.unitPrice * i.qty, 0);
 
     const [isLoading, setIsLoading] = useState(false);
@@ -21,25 +21,78 @@ export default function CheckoutPage() {
     const isCanceled = params.get("canceled") === "true";
 
     useEffect(() => {
-        if (isSuccess) {
+        if (!isSuccess) return;
+
+        async function persistStock() {
+            // build the payload: list of { id, stock: amountToSubtract }
+            const payload = cart.items.map(item => ({
+                id: item.coffeeId,
+                stock: item.qty
+            }));
+
+            try {
+                const res = await fetch(
+                    "http://localhost:8080/reports/stock/decrement",
+                    {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify(payload)
+                    }
+                );
+                if (!res.ok) {
+                    const text = await res.text();
+                    console.error("Failed to decrement stock:", res.status, text);
+                } else {
+                    // update your in-memory stock as well
+                    cart.items.forEach(item => {
+                        decrementStock(item.coffeeId, item.qty);
+                    });
+                }
+            } catch (err) {
+                console.error("Error decrementing stock:", err);
+            }
+
+            // now clear the cart and show success
             clearCart();
             setShowSuccess(true);
             window.history.replaceState({}, document.title, "/checkout");
         }
-    }, [isSuccess, clearCart]);
+
+        persistStock();
+    }, [isSuccess, cart.items, decrementStock, clearCart]);
 
     const handleProceed = async () => {
         setIsLoading(true);
+
+        // Build the payload your CreateSessionRequest expects
+        const payload = {
+            items: cart.items.map(item => ({
+                coffeeId: item.coffeeId,
+                name: item.name,
+                unitPrice: item.unitPrice,
+                quantity: item.qty
+            }))
+        };
+
         try {
             const resp = await fetch(
                 "http://localhost:8080/payments/create-session",
                 {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({amount: total}),
+                    body: JSON.stringify(payload),
                 }
             );
-            if (!resp.ok) throw new Error(await resp.text());
+
+            if (!resp.ok) {
+                // Grab the real server error to help debug
+                const errText = await resp.text();
+                console.error("Backend error:", resp.status, errText);
+                alert("Payment failed:\n" + errText);
+                setIsLoading(false);
+                return;
+            }
+
             const {id: sessionId} = await resp.json();
             const stripe = await stripePromise;
             await stripe.redirectToCheckout({sessionId});
@@ -50,14 +103,12 @@ export default function CheckoutPage() {
         }
     };
 
+
     if (isCanceled) {
         return (
             <div className="checkout">
                 <h1>Payment Cancelled</h1>
                 <p>Looks like you backed out. No worries—feel free to try again.</p>
-                {/*<div className="return-link">*/}
-                {/*    <Link to="/">← Back to Home</Link>*/}
-                {/*</div>*/}
             </div>
         );
     }
@@ -67,16 +118,15 @@ export default function CheckoutPage() {
             {showSuccess && (
                 <div className="success-banner">
                     Thank you for your purchase!
-                    {/*<div className="return-link">*/}
-                    {/*    <Link to="/">← Back to Home</Link>*/}
-                    {/*</div>*/}
                 </div>
             )}
 
             <Link className="return-link" to="/shop-page">
                 ← Go back
             </Link>
+
             <h1>Your Cart</h1>
+
             {cart.items.length === 0 ? (
                 <p className="text-center">
                     {showSuccess ? "Your cart is now empty." : "Your cart is empty."}
@@ -84,7 +134,7 @@ export default function CheckoutPage() {
             ) : (
                 <>
                     <div className="checkout-list">
-                        {cart.items.map((item) => (
+                        {cart.items.map(item => (
                             <div key={item.coffeeId} className="checkout-item">
                 <span className="item-desc">
                   <button
@@ -104,7 +154,8 @@ export default function CheckoutPage() {
                   >
                     +
                   </button>
-                  <span className="space-name"> x </span> {item.name}
+                  <span className="space-name"> x </span>
+                    {item.name}
                 </span>
                                 <span className="item-total">{item.lineTotal} lei</span>
                             </div>
@@ -124,7 +175,11 @@ export default function CheckoutPage() {
                         >
                             {isLoading ? "Loading…" : "Proceed to Payment"}
                         </button>
-                        <button className="clear" onClick={clearCart} disabled={isLoading}>
+                        <button
+                            className="clear"
+                            onClick={clearCart}
+                            disabled={isLoading}
+                        >
                             Clear Cart
                         </button>
                     </div>

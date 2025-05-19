@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
+@font-face {
+    font-family: "Coffee Town";
+    src: url("/public/fonts/Coffee Town.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Soap Bubble";
+    src: url("/public/fonts/Soap Bubble.otf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --primary: #ed2176;
     --secondary: #63A375;

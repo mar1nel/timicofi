@@ -6,8 +6,9 @@ const Footer = () => {
     return (
         <div className='footer'>
             <div className='container'>
-                <div className='logo-footer'>
-                    <h1>L'Oli<span className='primary'>vibes</span></h1>
+                <div className='logo-footer-font'>
+                    <h1>L'Oli<span>vibes</span></h1>
+                    <div className='timis'>Now in Timisoara</div>
                 </div>
                 <div className='col'>
                     <h5>Support</h5>

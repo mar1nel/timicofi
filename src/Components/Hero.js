@@ -68,7 +68,7 @@ export default function Hero() {
 
             <section className="hero-section hero-section--full hero-section--orange" id="whatscooking">
                 <div className="wrapper">
-                    <h2>What’s cookin’ good lookin’?</h2>
+                    <h2 className="text-h2">What’s cookin’ good lookin’? :)</h2>
                 </div>
             </section>
 

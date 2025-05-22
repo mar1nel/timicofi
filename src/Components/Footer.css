@@ -53,26 +53,24 @@
     margin-right: 4px;
 }
 
+.logo-footer-font {
+    font-family: "Sawer", sans-serif;
+    font-size: 1.8rem;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    grid-column: 1 / -1;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.timis {
+    color: #fd5da1;
+}
+
 @media screen and (max-width: 940px) {
     .footer .container {
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
-    }
-
-    .logo-footer {
-        .highlight {
-            font-family: "Coffee Spark", sans-serif;
-            color: var(--primary);
-        }
-
-        font-family: "Sawer", sans-serif;
-        font-size: 1.8rem;
-        font-weight: normal;
-        letter-spacing: 0.05em;
-        /*color: #fff;*/
-        line-height: 1;
-        grid-column: 1 / -1;
-        justify-content: center;
-        margin-bottom: 2rem;
     }
 }

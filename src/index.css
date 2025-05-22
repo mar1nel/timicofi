@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
+@font-face {
+    font-family: 'Coffee Spark';
+    src: url("/public/fonts/Coffee Spark.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Catboo';
+    src: url("/public/fonts/Catboo.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sawer';
+    src: url("/public/fonts/Sawer.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
 :root {
     --primary: #ed2176;
     --secondary: #63A375;

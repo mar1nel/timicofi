@@ -9,7 +9,7 @@ const stripePromise = loadStripe(
 );
 
 export default function CheckoutPage() {
-    const {cart, addToCart, clearCart} = useCart();
+    const {cart, addToCart, clearCart, currentUserId} = useCart();
     const total = cart.items.reduce((sum, i) => sum + i.unitPrice * i.qty, 0);
 
     const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,7 @@ export default function CheckoutPage() {
     const params = new URLSearchParams(search);
     const isSuccess = params.get("success") === "true";
     const isCanceled = params.get("canceled") === "true";
-
+ 
     useEffect(() => {
         if (isSuccess) {
             clearCart();
@@ -28,36 +28,57 @@ export default function CheckoutPage() {
         }
     }, [isSuccess, clearCart]);
 
-    const handleProceed = async () => {
+    async function handleProceed() {
+        if (!currentUserId) {
+            alert("Please log in before checking out.");
+            return;
+        }
+        if (cart.items.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+
         setIsLoading(true);
+
+        const payload = {
+            userId: currentUserId,
+            amount: total
+        };
+
         try {
             const resp = await fetch(
                 "http://localhost:8080/payments/create-session",
                 {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({amount: total}),
+                    body: JSON.stringify(payload),
                 }
             );
-            if (!resp.ok) throw new Error(await resp.text());
+            if (!resp.ok) {
+                const errorBody = await resp.json().catch(() => null);
+                const msg = (errorBody && errorBody.error) || resp.statusText;
+                alert("Payment setup failed: " + msg);
+                setIsLoading(false);
+                return;
+            }
+
             const {id: sessionId} = await resp.json();
             const stripe = await stripePromise;
             await stripe.redirectToCheckout({sessionId});
+
         } catch (err) {
             console.error("Stripe error:", err);
             alert("Could not start payment. Please try again.");
             setIsLoading(false);
         }
-    };
+    }
 
     if (isCanceled) {
         return (
             <div className="checkout">
                 <h1>Payment Cancelled</h1>
                 <p>Looks like you backed out. No worries—feel free to try again.</p>
-                {/*<div className="return-link">*/}
-                {/*    <Link to="/">← Back to Home</Link>*/}
-                {/*</div>*/}
+                <Link to="/shop-page">← Back to Shop</Link>
             </div>
         );
     }
@@ -67,15 +88,11 @@ export default function CheckoutPage() {
             {showSuccess && (
                 <div className="success-banner">
                     Thank you for your purchase!
-                    {/*<div className="return-link">*/}
-                    {/*    <Link to="/">← Back to Home</Link>*/}
-                    {/*</div>*/}
+                    <Link to="/">← Back to Home</Link>
                 </div>
             )}
 
-            <Link className="return-link" to="/shop-page">
-                ← Go back
-            </Link>
+            <Link className="return-link" to="/shop-page">← Go back</Link>
             <h1>Your Cart</h1>
             {cart.items.length === 0 ? (
                 <p className="text-center">
@@ -84,7 +101,7 @@ export default function CheckoutPage() {
             ) : (
                 <>
                     <div className="checkout-list">
-                        {cart.items.map((item) => (
+                        {cart.items.map(item => (
                             <div key={item.coffeeId} className="checkout-item">
                 <span className="item-desc">
                   <button
@@ -94,16 +111,12 @@ export default function CheckoutPage() {
                               ? addToCart(item.coffeeId, -1)
                               : addToCart(item.coffeeId, -item.qty)
                       }
-                  >
-                    −
-                  </button>
+                  >−</button>
                   <span className="qty">{item.qty}</span>
                   <button
                       className="qty-btn"
                       onClick={() => addToCart(item.coffeeId, 1)}
-                  >
-                    +
-                  </button>
+                  >+</button>
                   <span className="space-name"> x </span> {item.name}
                 </span>
                                 <span className="item-total">{item.lineTotal} lei</span>
@@ -124,7 +137,11 @@ export default function CheckoutPage() {
                         >
                             {isLoading ? "Loading…" : "Proceed to Payment"}
                         </button>
-                        <button className="clear" onClick={clearCart} disabled={isLoading}>
+                        <button
+                            className="clear"
+                            onClick={clearCart}
+                            disabled={isLoading}
+                        >
                             Clear Cart
                         </button>
                     </div>

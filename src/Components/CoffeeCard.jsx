@@ -8,6 +8,7 @@ export default function CoffeeCard({
                                        name,
                                        description,
                                        price,
+                                       stock,
                                        image,
                                        disabled = false,
                                    }) {

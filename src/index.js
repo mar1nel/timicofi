@@ -10,6 +10,7 @@ import AuthPage from "./Pages/AuthPage";
 import './index.css';
 import ShopPage from "./Pages/ShopPage";
 import CheckoutPage from "./Pages/CheckoutPage";
+import AdminPage from "./Pages/AdminPage";
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
     { path: "/shop-page", element: <ShopPage /> },
     { path: "/checkout", element: <CheckoutPage />},
     { path: "/contact-page", element: <ContactPage /> },
+    { path: "/admin", element: <AdminPage /> },
 ]);
 
 
